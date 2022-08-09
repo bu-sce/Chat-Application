@@ -8,6 +8,7 @@ import API_Rules from './middleware/apiRules';
 import ErrorHandler from './middleware/errorHandler';
 // const corsOptions = require('./config/coreOption')
 import userRoutes from './routes/userRoute';
+import messagesRoute from './routes/messagesRoute';
 import { number } from 'joi';
 
 const app = express();
@@ -41,6 +42,7 @@ const StartServer = () => {
 
     /** Routes */
     app.use("/api/auth", userRoutes);
+    app.use("/api/messages", messagesRoute);
 
 
     /** Healthcheck */

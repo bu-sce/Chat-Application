@@ -12,6 +12,7 @@ const apiRules_1 = __importDefault(require("./middleware/apiRules"));
 const errorHandler_1 = __importDefault(require("./middleware/errorHandler"));
 // const corsOptions = require('./config/coreOption')
 const userRoute_1 = __importDefault(require("./routes/userRoute"));
+const messagesRoute_1 = __importDefault(require("./routes/messagesRoute"));
 const app = (0, express_1.default)();
 /** Connect to Mongo */
 mongoose_1.default
@@ -35,6 +36,7 @@ const StartServer = () => {
     app.use(apiRules_1.default);
     /** Routes */
     app.use("/api/auth", userRoute_1.default);
+    app.use("/api/messages", messagesRoute_1.default);
     /** Healthcheck */
     /** Error handling */
     app.use(errorHandler_1.default);
