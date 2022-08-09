@@ -5,14 +5,18 @@
   "main": "src/index.ts",
 
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon build/index.js",
     "start": "node build/index.js",
-    "build": "rm -rf build/ && tsc"
-    
+    "build": "rm -rf build/ && tsc",
+    "monitor": "tsc --watch"    
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bu-sce/Chat-Application/issues"
+  },
+  "homepage": "https://github.com/bu-sce/Chat-Application#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "chalk": "^4.1.2",
@@ -25,7 +29,11 @@
     "ts-node": "^10.9.1"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.12",
     "@types/express": "^4.17.13",
+    "@types/node": "^18.6.5",
+    "nodemon": "^2.0.19",
+    "prettier": "^2.7.1",
     "typescript": "^4.7.4"
   }
 }

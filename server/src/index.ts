@@ -1,29 +1,29 @@
-import express, { Request, Response ,NextFunction } from 'express';
+import express, { Application } from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
+
 import { config } from './config/config';
 import Logging from './library/Logging';
 import Logger from './middleware/Logger';
 import API_Rules from './middleware/apiRules';
 import ErrorHandler from './middleware/errorHandler';
-// const corsOptions = require('./config/coreOption')
-import userRoutes from './routes/userRoute';
-import messagesRoute from './routes/messagesRoute';
-import { number } from 'joi';
 
-const app = express();
+import userRoutes from './routes/userRoute';
+import messageRoute from './routes/messagesRoute';
+
+const app: Application = express();
 
 /** Connect to Mongo */
 mongoose
-    .connect(config.mongo.url, { 
-        retryWrites: true, 
+    .connect(config.mongo.url, {
+        retryWrites: true,
         w: 'majority',
-     })
+    })
     .then(() => {
         Logging.info('MongoDB connected successfully.');
         StartServer();
     })
-    .catch((error : any) => Logging.error(error));
+    .catch((error) => Logging.error(error));
 
 /** Only Start Server if Mongoose Connects */
 const StartServer = () => {
@@ -34,22 +34,17 @@ const StartServer = () => {
     app.use(express.json());
 
     /** Rules of our API */
-    //app.use(cors(corsOptions));
-     app.use(API_Rules);
-
-    
-
+    app.use(cors())
+    app.use(API_Rules);
 
     /** Routes */
-    app.use("/api/auth", userRoutes);
-    app.use("/api/messages", messagesRoute);
-
-
-    /** Healthcheck */
-   
+    app.use('/api/auth', userRoutes);
+    app.use('/api/messages', messageRoute);
 
     /** Error handling */
     app.use(ErrorHandler);
 
-    app.listen(config.server.port, () => Logging.info(`Server is running on port ${config.server.port}`));
+    const server = app.listen(config.server.port, () => Logging.info(`Server is running on port ${config.server.port}`));
+
+   
 };
