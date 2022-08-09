@@ -3,7 +3,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.readAll = void 0;
 const userModel_1 = __importDefault(require("../models/userModel"));
 const bcrypt = require('bcrypt');
 const readUser = async (req, res, next) => {
@@ -47,16 +46,6 @@ const createUser = async (req, res, next) => {
         next(ex);
     }
 };
-const readAll = async (req, res, next) => {
-    try {
-        const users = await userModel_1.default.find({ _id: { $ne: req.params.id } }).select(['email', 'username', 'avatarImage', '_id']);
-        return res.json(users);
-    }
-    catch (ex) {
-        next(ex);
-    }
-};
-exports.readAll = readAll;
 const setAvatar = async (req, res, next) => {
     try {
         const userId = req.params.id;
@@ -83,4 +72,4 @@ const setAvatar = async (req, res, next) => {
 //     next(ex);
 //   }
 // };
-exports.default = { createUser, readUser, readAll: exports.readAll, setAvatar }; //, readAuthor, readAll, updateAuthor, deleteAuthor };
+exports.default = { createUser, readUser, setAvatar }; //, readAuthor, readAll, updateAuthor, deleteAuthor };
