@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import styled from "styled-components";
 import { useNavigate, Link } from "react-router-dom";
 import Logo from "../assets/bahaa_logo.svg";
 import background from "../assets/background.png";
 import introGif from "../assets/introGif.gif";
 import { ToastContainer, toast } from "react-toastify";
-import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
 import { registerRoute } from "../utils/APIRoutes";
 
 const Register = () => {
-  // style object for the error message
   const navigate = useNavigate();
+  // style object for the error message
   const toastOptions = {
     position: "bottom-right",
-    autoClose: 8000,
+    autoClose: 5000,
     pauseOnHover: true,
     draggable: true,
     theme: "light",
@@ -26,6 +26,12 @@ const Register = () => {
     password: "",
     confirmPassword: "",
   });
+
+  useEffect(() => {
+    if (localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)) {
+      navigate("/");
+    }
+  }, []);
 
   // whenever the user change the form inputs , the values state get updated
   const handleChange = (event) => {
@@ -58,8 +64,9 @@ const Register = () => {
     return true;
   };
 
-  const handleSubmit = async(event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    // if the handle validation returned true .. send the user data to the backend to record a new user
     if (handleValidation()) {
       const { email, username, password } = values;
       const { data } = await axios.post(registerRoute, {
@@ -71,18 +78,19 @@ const Register = () => {
       if (data.status === false) {
         toast.error(data.msg, toastOptions);
       }
+      // if the data posted correctly , record the user in the browser local storage
       if (data.status === true) {
         localStorage.setItem(
           process.env.REACT_APP_LOCALHOST_KEY,
           JSON.stringify(data.user)
         );
-        navigate("/chat");
+        navigate("/");
       }
     }
   };
 
   return (
-    <HomeContainer>
+    <>
       <FormContainer>
         <form action="" onSubmit={(event) => handleSubmit(event)}>
           <div className="brand">
@@ -119,40 +127,10 @@ const Register = () => {
           </span>
         </form>
       </FormContainer>
-
-      <IntroGifContainer>
-        <div>
-          <h1 className="introHeader">Join Now !</h1>
-        </div>
-        <div>
-          <img src={introGif} alt="Intro gif" />
-        </div>
-      </IntroGifContainer>
       <ToastContainer />
-    </HomeContainer>
+    </>
   );
 };
-
-const HomeContainer = styled.div`
-  background-image: url(${background});
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const IntroGifContainer = styled.div`
-  height: 50%;
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-
-  .introHeader {
-    color: #db3c21;
-    font-size: 7rem;
-
-    font-family: "Pacifico", cursive;
-  }
-`;
 
 const FormContainer = styled.div`
   height: 100vh;
@@ -162,75 +140,63 @@ const FormContainer = styled.div`
   justify-content: center;
   gap: 1rem;
   align-items: center;
-
+  background-color: #131324;
   .brand {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 1rem;
     justify-content: center;
     img {
-      height: 12rem;
+      height: 5rem;
     }
     h1 {
       color: white;
-      font-size: 3rem;
-
       font-family: "Pacifico", cursive;
     }
   }
-
   form {
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    background-color: #db3c21;
+    background-color: #00000076;
     border-radius: 2rem;
-    padding: 8rem 10rem;
+    padding: 3rem 5rem;
   }
-
   input {
-    /*background-color: transparent;*/
+    background-color: transparent;
     padding: 1rem;
-    border: 0.2rem solid #db3c21;
+    border: 0.1rem solid #4e0eff;
     border-radius: 0.4rem;
-    color: black;
+    color: white;
     width: 100%;
-    font-size: 2rem;
+    font-size: 1rem;
     &:focus {
-      border: 0.2rem solid #034f8c;
+      border: 0.1rem solid #997af0;
       outline: none;
     }
   }
-
   button {
-    background-color: #314a5e;
+    background-color: #4e0eff;
     color: white;
-    padding: 2rem 3rem;
+    padding: 1rem 2rem;
     border: none;
     font-weight: bold;
     cursor: pointer;
-    border-radius: 0.6rem;
-    font-size: 1.5rem;
+    border-radius: 0.4rem;
+    font-size: 1rem;
     text-transform: uppercase;
-    transition: 0.3s ease-in-out;
     &:hover {
-      background-color: #034f8c;
+      background-color: #4e0eff;
     }
   }
-
   span {
-    font-size: 1.5rem;
     color: white;
     text-transform: uppercase;
     a {
-      color: #314a5e;
+      color: #4e0eff;
       text-decoration: none;
       font-weight: bold;
-      &:hover {
-        color: #034f8c;
-      }
     }
   }
 `;
-
 export default Register;
