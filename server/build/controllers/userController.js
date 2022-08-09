@@ -57,26 +57,23 @@ const readAll = async (req, res, next) => {
     }
 };
 exports.readAll = readAll;
-// module.exports.setAvatar = async (req : Request, res : Response, next : NextFunction) => {
-//   try {
-//     const userId = req.params.id;
-//     const avatarImage = req.body.image;
-//     const userData = await User.findByIdAndUpdate(
-//       userId,
-//       {
-//         isAvatarImageSet: true,
-//         avatarImage,
-//       },
-//       { new: true }
-//     );
-//     return res.json({
-//       isSet: userData.isAvatarImageSet,
-//       image: userData.avatarImage,
-//     });
-//   } catch (ex) {
-//     next(ex);
-//   }
-// };
+const setAvatar = async (req, res, next) => {
+    try {
+        const userId = req.params.id;
+        const avatarImage = req.body.avatarImage;
+        const userData = await userModel_1.default.findByIdAndUpdate(userId, {
+            isAvatarImageSet: true,
+            avatarImage
+        });
+        return res.json({
+            isSet: userData.isAvatarImageSet,
+            image: userData.avatarImage
+        });
+    }
+    catch (ex) {
+        next(ex);
+    }
+};
 // module.exports.logOut = (req : Request, res : Response, next : NextFunction) => {
 //   try {
 //     if (!req.params.id) return res.json({ msg: "User id is required " });
@@ -86,4 +83,4 @@ exports.readAll = readAll;
 //     next(ex);
 //   }
 // };
-exports.default = { createUser, readUser, readAll: exports.readAll }; //, readAuthor, readAll, updateAuthor, deleteAuthor };
+exports.default = { createUser, readUser, readAll: exports.readAll, setAvatar }; //, readAuthor, readAll, updateAuthor, deleteAuthor };
