@@ -1,12 +1,15 @@
 import express, { Application } from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
+const socket = require('socket.io');
+import { Socket } from 'socket.io';
 
 import { config } from './config/config';
 import Logging from './library/Logging';
 import Logger from './middleware/Logger';
 import API_Rules from './middleware/apiRules';
 import ErrorHandler from './middleware/errorHandler';
+
 
 import userRoutes from './routes/userRoute';
 import messageRoute from './routes/messagesRoute';
@@ -46,5 +49,27 @@ const StartServer = () => {
 
     const server = app.listen(config.server.port, () => Logging.info(`Server is running on port ${config.server.port}`));
 
-   
+    /** Socket connection */
+    const io = socket(server, {
+        cors: {
+            origin: '*',
+            Credentials: true,
+        },
+    });
+
+    global.onlineUsers = new Map();
+
+    io.on("connection", (socket: Socket) => {
+        global.chatSocket = socket;
+        socket.on("add-user", (userId: any) => {
+            onlineUsers.set(userId, socket.id);
+        });
+
+        socket.on("send-msg", (data: any) => {
+            const sendUserSocket = onlineUsers.get(data.to);
+            if (sendUserSocket) {
+                socket.to(sendUserSocket).emit("msg-recieve", data.msg);
+            }
+        });
+    });
 };
