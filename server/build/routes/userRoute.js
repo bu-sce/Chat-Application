@@ -9,5 +9,6 @@ const router = express_1.default.Router();
 router.post('/login', userController_1.default.readUser);
 router.post('/register', userController_1.default.createUser);
 router.get('/allusers/:id', userController_1.default.readAll);
+router.get('/setAvatar/:id', userController_1.default.setAvatar);
 //router.get("/logout/:id", logOut);
 exports.default = router;
