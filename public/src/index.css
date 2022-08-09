@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+
+  /*
+  border-box tells the browser to account for any border and padding in the values you specify for an element's width and height. If you set an element's width to 100 pixels, that 100 pixels will include any border or padding you added, and the content box will shrink to absorb that extra width.
+  */
+  box-sizing: border-box;
+}
+
+body,
+button,
+input {
+  font-family: "Josefin Sans", sans-serif;
+}
+
+body {
+  /*background-image: url("./assets/background.png");*/
+  /*
+A height of 100vh corresponds to the maximum possible viewport height. 
+ */
+  max-height: 100vh;
+  max-width: 100vw;
+
+  /*
+With the hidden value, the overflow is clipped, and the rest of the content is hidden: You can use the overflow property when you want to have better control of the layout. The overflow property specifies what happens if content overflows an element's box.
+*/
+  overflow: hidden;
+}
