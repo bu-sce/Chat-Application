@@ -70,16 +70,16 @@ const setAvatar = async (req : Request, res: Response, next : NextFunction) => {
     }
 };
 
-// module.exports.logOut = (req : Request, res : Response, next : NextFunction) => {
-//   try {
-//     if (!req.params.id) return res.json({ msg: "User id is required " });
-//     onlineUsers.delete(req.params.id);
-//     return res.status(200).send();
-//   } catch (ex) {
-//     next(ex);
-//   }
-// };
+const logOut = (req : Request, res : Response, next : NextFunction) => {
+  try {
+    if (!req.params.id) return res.json({ msg: "User id is required " });
+    onlineUsers.delete(req.params.id);
+    return res.status(200).send();
+  } catch (ex) {
+    next(ex);
+  }
+};
 
-export default { createUser, readUser , setAvatar , readAll}; //, readAuthor, readAll, updateAuthor, deleteAuthor };
+export default { createUser, readUser , setAvatar , readAll , logOut}; //, readAuthor, updateAuthor, deleteAuthor };
 
 
