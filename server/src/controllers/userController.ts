@@ -44,6 +44,14 @@ const createUser = async (req: Request, res: Response, next: NextFunction) => {
     }
 };
 
+export const readAll = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const users = await User.find({ _id: { $ne: req.params.id } }).select(['email', 'username', 'avatarImage', '_id']);
+        return res.json(users);
+    } catch (ex) {
+        next(ex);
+    }
+};
 
 const setAvatar = async (req : Request, res: Response, next : NextFunction) => {
     try {
@@ -72,6 +80,6 @@ const setAvatar = async (req : Request, res: Response, next : NextFunction) => {
 //   }
 // };
 
-export default { createUser, readUser , setAvatar}; //, readAuthor, readAll, updateAuthor, deleteAuthor };
+export default { createUser, readUser , setAvatar , readAll}; //, readAuthor, readAll, updateAuthor, deleteAuthor };
 
 

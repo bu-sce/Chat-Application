@@ -4,6 +4,6 @@ import  controller from '../controllers/messagesController';
 const router = express.Router();
 
 router.post('/addmsg', controller.addMessage);
-router.post('/getmsg', controller.getAllMessage);
+router.post('/getmsg', controller.getAllMessages);
 
 export default router;
