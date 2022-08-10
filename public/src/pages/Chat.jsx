@@ -5,6 +5,7 @@ import { io } from "socket.io-client";
 import styled from "styled-components";
 import { allUsersRoute, host } from "../utils/APIRoutes";
 import Contact from "../components/Contacts"
+import Welcome from "../components/Welcome";
 
 export default function Chat() {
   const navigate = useNavigate();
@@ -46,6 +47,7 @@ export default function Chat() {
       <Container>
         <div className="container">
         <Contact contacts={contacts} changeChat={handleChatChange}></Contact>
+        <Welcome />
         </div>
       </Container>
     </>
