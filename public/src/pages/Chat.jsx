@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { io } from "socket.io-client";
 import styled from "styled-components";
 import { allUsersRoute, host } from "../utils/APIRoutes";
+import ChatContainer from "../components/ChatContainer";
 import Contact from "../components/Contacts"
 import Welcome from "../components/Welcome";
 
@@ -47,7 +48,11 @@ export default function Chat() {
       <Container>
         <div className="container">
         <Contact contacts={contacts} changeChat={handleChatChange}></Contact>
-        <Welcome />
+        {currentChat === undefined ? (
+            <Welcome />
+          ) : (
+            <ChatContainer currentChat={currentChat} socket={socket} />
+          )}
         </div>
       </Container>
     </>
