@@ -9,7 +9,8 @@ export default function ChatContainer({ currentChat, socket }) {
   const scrollRef = useRef();
   const [arrivalMessage, setArrivalMessage] = useState(null);
 
-  useEffect(async () => {
+  useEffect(() => {
+    const s = async () => {
     const data = await JSON.parse(
       localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
     );
@@ -17,7 +18,7 @@ export default function ChatContainer({ currentChat, socket }) {
       from: data._id,
       to: currentChat._id,
     });
-    setMessages(response.data);
+    setMessages(response.data);};s();
   }, [currentChat]);
 
   useEffect(() => {
@@ -75,7 +76,7 @@ export default function ChatContainer({ currentChat, socket }) {
             <h3>{currentChat.username}</h3>
           </div>
         </div>
-        <Logout />
+        
       </div>
       <div className="chat-messages">
         {messages.map((message) => {
@@ -94,7 +95,7 @@ export default function ChatContainer({ currentChat, socket }) {
           );
         })}
       </div>
-      <ChatInput handleSendMsg={handleSendMsg} />
+      
     </Container>
   );
 }
