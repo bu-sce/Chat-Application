@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { io } from "socket.io-client";
 import styled from "styled-components";
 import { allUsersRoute, host } from "../utils/APIRoutes";
+import Contact from "../components/Contacts"
 
 export default function Chat() {
   const navigate = useNavigate();
@@ -29,7 +30,13 @@ export default function Chat() {
       socket.current.emit("add-user", currentUser._id);
     }
   }, [currentUser]);
-
+  useEffect(() => {
+    const n = async () => {
+    if (currentUser) {
+        const data = await axios.get(`${allUsersRoute}/${currentUser._id}`);
+        setContacts(data.data);
+      } };n();
+  }, [currentUser]);
 
   const handleChatChange = (chat) => {
     setCurrentChat(chat);
@@ -38,8 +45,7 @@ export default function Chat() {
     <>
       <Container>
         <div className="container">
-          
-          
+        <Contact contacts={contacts} changeChat={handleChatChange}></Contact>
         </div>
       </Container>
     </>
