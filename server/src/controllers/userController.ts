@@ -55,19 +55,24 @@ export const readAll = async (req: Request, res: Response, next: NextFunction) =
 
 const setAvatar = async (req : Request, res: Response, next : NextFunction) => {
     try {
-        const userId = req.params.id;
-        const avatarImage = req.body.image;
-        const userData = await User.findByIdAndUpdate(userId, {
-            isAvatarImageSet: true,
-            avatarImage
-        });
-        return res.json({
-            isSet: userData.isAvatarImageSet,
-            image: userData.avatarImage
-        });
-    } catch (ex) {
-        next(ex);
-    }
+    const userId = req.params.id;
+    const avatarImage = req.body.image;
+    const userData = await User.findByIdAndUpdate(
+      userId,
+      {
+        isAvatarImageSet: true,
+        avatarImage,
+      },
+      { new: true }
+    );
+    return res.json({
+      isSet: userData.isAvatarImageSet,
+      image: userData.avatarImage,
+    });
+  } catch (ex) {
+    next(ex);
+  }
+    
 };
 
 const logOut = (req : Request, res : Response, next : NextFunction) => {
