@@ -56,7 +56,7 @@ export const readAll = async (req: Request, res: Response, next: NextFunction) =
 const setAvatar = async (req : Request, res: Response, next : NextFunction) => {
     try {
         const userId = req.params.id;
-        const avatarImage = req.body.avatarImage;
+        const avatarImage = req.body.image;
         const userData = await User.findByIdAndUpdate(userId, {
             isAvatarImageSet: true,
             avatarImage
