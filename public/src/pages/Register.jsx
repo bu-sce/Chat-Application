@@ -84,7 +84,7 @@ const Register = () => {
           process.env.REACT_APP_LOCALHOST_KEY,
           JSON.stringify(data.user)
         );
-        navigate("/chat");
+        navigate("/setavatar");
       }
     }
   };
@@ -94,8 +94,9 @@ const Register = () => {
       <FormContainer>
         <form action="" onSubmit={(event) => handleSubmit(event)}>
           <div className="brand">
-            <img src={Logo} alt="logo" />
-            <h1>Tele-Chat !</h1>
+            
+            <h1>
+              <span>Tele-</span>Chat !</h1>
           </div>
           <input
             type="text"
@@ -140,7 +141,7 @@ const FormContainer = styled.div`
   justify-content: center;
   gap: 1rem;
   align-items: center;
-  background-color: #131324;
+  background-color: #f5f5f5;
   .brand {
     display: flex;
     align-items: center;
@@ -148,6 +149,10 @@ const FormContainer = styled.div`
     justify-content: center;
     img {
       height: 5rem;
+    }
+    span{
+      color : #20272e;
+      font-family: "Pacifico", cursive;
     }
     h1 {
       color: white;
@@ -158,16 +163,16 @@ const FormContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    background-color: #00000076;
+    background-color: #0458f3;
     border-radius: 2rem;
     padding: 3rem 5rem;
   }
   input {
-    background-color: transparent;
+    background-color: #f5f5f5;
     padding: 1rem;
     border: 0.1rem solid #4e0eff;
     border-radius: 0.4rem;
-    color: white;
+    color: #20272e;
     width: 100%;
     font-size: 1rem;
     &:focus {
@@ -176,7 +181,7 @@ const FormContainer = styled.div`
     }
   }
   button {
-    background-color: #4e0eff;
+    background-color: #20272e;
     color: white;
     padding: 1rem 2rem;
     border: none;
@@ -186,14 +191,15 @@ const FormContainer = styled.div`
     font-size: 1rem;
     text-transform: uppercase;
     &:hover {
-      background-color: #4e0eff;
+      background-color: #f5f5f5;
+      color : #20272e;
     }
   }
   span {
     color: white;
     text-transform: uppercase;
     a {
-      color: #4e0eff;
+      color: #20272e;
       text-decoration: none;
       font-weight: bold;
     }

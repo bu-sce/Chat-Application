@@ -26,7 +26,7 @@ export default function Contacts({ contacts, changeChat }) {
       <Container>
         <div className="brand">
           <img src={Logo} alt="logo" />
-          <h3>Tele-chat</h3>
+          <h3><span>Tele-</span>Chat !</h3>
         </div>
         <div className="contacts">
           {contacts.map((contact, index) => {
@@ -67,87 +67,98 @@ export default function Contacts({ contacts, changeChat }) {
   )
 }
 const Container = styled.div`
-  display: grid;
-  grid-template-rows: 10% 75% 15%;
-  overflow: hidden;
-  background-color: #080420;
-  .brand {
+display: grid;
+grid-template-rows: 10% 75% 15%;
+overflow: hidden;
+background-color: #f5f5f5;
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+  img {
+    height: 2rem;
+  }
+  h3 {
+      color: #0458f3;
+      font-family: 'Pacifico', cursive;
+      font-size:30px;
+  }
+}
+span{
+  color:#20272e;
+}
+.contacts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: auto;
+  gap: 0.8rem;
+  &::-webkit-scrollbar {
+    width: 0.4rem;
+    &-thumb {
+      background-color: #20272e;
+      width: 0.1rem;
+      border-radius: 1rem;
+    }
+  }
+  .contact {
+    background-color: #fff;
+    min-height: 5rem;
+    cursor: pointer;
+    width: 90%;
+    border-radius: 0.2rem;
+    padding: 0.4rem;
     display: flex;
-    align-items: center;
     gap: 1rem;
-    justify-content: center;
-    img {
-      height: 2rem;
-    }
-    h3 {
-      color: white;
-      text-transform: uppercase;
-    }
-  }
-  .contacts {
-    display: flex;
-    flex-direction: column;
     align-items: center;
-    overflow: auto;
-    gap: 0.8rem;
-    &::-webkit-scrollbar {
-      width: 0.2rem;
-      &-thumb {
-        background-color: #ffffff39;
-        width: 0.1rem;
-        border-radius: 1rem;
-      }
-    }
-    .contact {
-      background-color: #ffffff34;
-      min-height: 5rem;
-      cursor: pointer;
-      width: 90%;
-      border-radius: 0.2rem;
-      padding: 0.4rem;
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-      transition: 0.5s ease-in-out;
-      .avatar {
-        img {
-          height: 3rem;
-        }
-      }
-      .username {
-        h3 {
-          color: white;
-        }
-      }
-    }
-    .selected {
-      background-color: #9a86f3;
-    }
-  }
-  .current-user {
-    background-color: #0d0d30;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
+    transition: 0.3s ease-in-out;
     .avatar {
       img {
-        height: 4rem;
-        max-inline-size: 100%;
+        height: 3rem;
       }
     }
     .username {
-      h2 {
-        color: white;
+      h3 {
+        color: #20272e;
       }
+      
     }
-    @media screen and (min-width: 720px) and (max-width: 1080px) {
-      gap: 0.5rem;
-      .username {
-        h2 {
-          font-size: 1rem;
-        }
+  }
+  .selected {
+    background-color: #20272e;
+  }
+  .selected {
+    h3{
+      color:#fff !important;
+     }
+  }
+   
+}
+.current-user {
+  background-color: #20272e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  .avatar {
+    img {
+      height: 4rem;
+      max-inline-size: 100%;
+    }
+  }
+  .username {
+    h2 {
+      color: white;
+    }
+  }
+  @media screen and (min-width: 720px) and (max-width: 1080px) {
+    gap: 0.5rem;
+    .username {
+      h2 {
+        font-size: 1rem;
       }
     }
   }
+}
 `
