@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react'
+import { useNavigate } from "react-router-dom";
 import styled from 'styled-components'
 import Logo from '../assets/logo.svg'
+import { TbCameraPlus } from 'react-icons/tb'
 
 export default function Contacts({ contacts, changeChat }) {
   const [currentUserName, setCurrentUserName] = useState(undefined)
   const [currentUserImage, setCurrentUserImage] = useState(undefined)
   const [currentSelected, setCurrentSelected] = useState(undefined)
+  const navigate = useNavigate();
   useEffect(() => {
     const c = async () => {
       const data = await JSON.parse(
@@ -19,6 +22,9 @@ export default function Contacts({ contacts, changeChat }) {
   const changeCurrentChat = (index, contact) => {
     setCurrentSelected(index)
     changeChat(contact)
+  }
+   function handleChangeAvatar(){
+    navigate("/setavatar");
   }
 
   return (
@@ -57,6 +63,10 @@ export default function Contacts({ contacts, changeChat }) {
               src={`data:image/svg+xml;base64,${currentUserImage}`}
               alt="avatar"
             />
+             <button onClick={handleChangeAvatar}>
+               <TbCameraPlus />
+             </button>
+            
           </div>
           <div className="username">
             <h2>{currentUserName}</h2>
@@ -138,13 +148,25 @@ span{
 .current-user {
   background-color: #20272e;
   display: flex;
+  
   justify-content: center;
   align-items: center;
   gap: 2rem;
   .avatar {
+    position:relative;
     img {
       height: 4rem;
       max-inline-size: 100%;
+      display:block;
+    }
+    svg{
+      position:absolute;
+      left:0;
+      top:0;
+      background-color:#20272e;
+      color:#fff;
+      font-size:1.2rem;
+      cursor:pointer;
     }
   }
   .username {
