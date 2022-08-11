@@ -22,7 +22,7 @@ export default function Contacts({ contacts, changeChat }) {
   
   return (
     <>
-      
+     {currentUserName && currentUserImage && (
         <Container>
           <div className="brand">
             <img src={Logo} alt="logo" />
@@ -38,7 +38,12 @@ export default function Contacts({ contacts, changeChat }) {
                   }`}
                   onClick={() => changeCurrentChat(index, contact)}
                 >
-                  
+                  <div className="avatar">
+                    <img
+                      src={""}
+                      alt=""
+                    />
+                  </div>
                   <div className="username">
                     <h3>{contact.username}</h3>
                   </div>
@@ -47,13 +52,18 @@ export default function Contacts({ contacts, changeChat }) {
             })}
           </div>
           <div className="current-user">
-            
+            <div className="avatar">
+              <img
+                src={""}
+                alt="avatar"
+              />
+            </div>
             <div className="username">
               <h2>{currentUserName}</h2>
             </div>
           </div>
         </Container>
-      
+      )}
     </>
   );
 }
@@ -100,7 +110,11 @@ const Container = styled.div`
       gap: 1rem;
       align-items: center;
       transition: 0.5s ease-in-out;
-      
+      .avatar {
+        img {
+          height: 3rem;
+        }
+      }
       .username {
         h3 {
           color: white;
