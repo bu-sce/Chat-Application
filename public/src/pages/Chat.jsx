@@ -39,7 +39,17 @@ export default function Chat() {
         setContacts(data.data);
       } };n();
   }, [currentUser]);
-
+  useEffect(() => {
+    const p = async () => {
+    if (currentUser) {
+      if (currentUser.isAvatarImageSet) {
+        const data = await axios.get(`${allUsersRoute}/${currentUser._id}`);
+        setContacts(data.data);
+      } else {
+        navigate("/setAvatar");
+      }
+    }};p();
+  }, [currentUser]);
   const handleChatChange = (chat) => {
     setCurrentChat(chat);
   };
