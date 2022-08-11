@@ -5,14 +5,18 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import SetAvatar from './components/setAvatar'
 import PageNotFound from './pages/PageNotFound'
+import Landing from "./pages/Landing"
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/" element={<Landing />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/setAvatar" element={<SetAvatar />} />
-        <Route path="/" element={<Chat />} />
+        
+        <Route path="/chat" element={<Chat />} />
+        
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>
