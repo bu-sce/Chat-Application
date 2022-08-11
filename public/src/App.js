@@ -1,10 +1,10 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import SetAvatar from './components/setAvatar'
 import Chat from './pages/Chat'
 import Login from './pages/Login'
 import Register from './pages/Register'
-
+import SetAvatar from './components/setAvatar'
+import PageNotFound from './pages/PageNotFound'
 const App = () => {
   return (
     <BrowserRouter>
@@ -13,6 +13,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/setAvatar" element={<SetAvatar />} />
         <Route path="/" element={<Chat />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>
   )
