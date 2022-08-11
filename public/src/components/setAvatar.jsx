@@ -49,7 +49,7 @@ export default function SetAvatar() {
           process.env.REACT_APP_LOCALHOST_KEY,
           JSON.stringify(user),
         )
-        navigate('/')
+        navigate('/chat')
       } else {
         toast.error('Error setting avatar. Please try again.', toastOptions)
       }
@@ -116,7 +116,7 @@ const Container = styled.div`
   align-items: center;
   flex-direction: column;
   gap: 3rem;
-  background-color: #131324;
+  background-color: #f5f5f5;
   height: 100vh;
   width: 100vw;
   .loader {
