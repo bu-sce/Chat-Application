@@ -23,7 +23,6 @@ export default function Contacts({ contacts, changeChat }) {
 
   return (
     <>
-<<<<<<< HEAD
       <Container>
         <div className="brand">
           <img src={Logo} alt="logo" />
@@ -44,33 +43,6 @@ export default function Contacts({ contacts, changeChat }) {
                     src={`data:image/svg+xml;base64,${contact.avatarImage}`}
                     alt=""
                   />
-=======
-     {currentUserName && currentUserImage && (
-        <Container>
-          <div className="brand">
-            <img src={Logo} alt="logo" />
-            <h3>Tele-Chat</h3>
-          </div>
-          <div className="contacts">
-            {contacts.map((contact, index) => {
-              return (
-                <div
-                  key={contact._id}
-                  className={`contact ${
-                    index === currentSelected ? "selected" : ""
-                  }`}
-                  onClick={() => changeCurrentChat(index, contact)}
-                >
-                  <div className="avatar">
-                    <img
-                      src={""}
-                      alt=""
-                    />
-                  </div>
-                  <div className="username">
-                    <h3>{contact.username}</h3>
-                  </div>
->>>>>>> ca4ea018ced3ad464a15faf3b0d04bb20cae3cb2
                 </div>
                 <div className="username">
                   <h3>{contact.username}</h3>
@@ -86,27 +58,11 @@ export default function Contacts({ contacts, changeChat }) {
               alt="avatar"
             />
           </div>
-<<<<<<< HEAD
           <div className="username">
             <h2>{currentUserName}</h2>
           </div>
         </div>
       </Container>
-=======
-          <div className="current-user">
-            <div className="avatar">
-              <img
-                src={""}
-                alt="avatar"
-              />
-            </div>
-            <div className="username">
-              <h2>{currentUserName}</h2>
-            </div>
-          </div>
-        </Container>
-      )}
->>>>>>> ca4ea018ced3ad464a15faf3b0d04bb20cae3cb2
     </>
   )
 }
