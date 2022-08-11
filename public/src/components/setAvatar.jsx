@@ -1,17 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
-import eif from '../assets/EIF.png'
-import gdz from '../assets/GDZ.png'
-import nff from '../assets/NFF.png'
-import rag from '../assets/RAG.png'
+import { Buffer } from 'buffer'
+import loader from '../assets/loader.gif'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { useNavigate } from 'react-router-dom'
 import { setAvatarRoute } from '../utils/APIRoutes'
 export default function SetAvatar() {
+  const api = `https://api.multiavatar.com/4645646`
   const navigate = useNavigate()
   const [avatars, setAvatars] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
   const [selectedAvatar, setSelectedAvatar] = useState(undefined)
   const toastOptions = {
     position: 'bottom-right',
@@ -21,11 +21,18 @@ export default function SetAvatar() {
     theme: 'dark',
   }
 
+  useEffect(() => {
+    const s = async () => {
+      if (!localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY))
+        navigate('/login')
+    }
+    s()
+  }, [])
+
   const setProfilePicture = async () => {
     if (selectedAvatar === undefined) {
       toast.error('Please select an avatar', toastOptions)
     } else {
-      //id,isAvatarImageSet,avatarImage
       const user = await JSON.parse(
         localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY),
       )
@@ -37,6 +44,7 @@ export default function SetAvatar() {
       if (data.isSet) {
         user.isAvatarImageSet = true
         user.avatarImage = data.image
+        console.log(user.avatarImage)
         localStorage.setItem(
           process.env.REACT_APP_LOCALHOST_KEY,
           JSON.stringify(user),
@@ -48,56 +56,56 @@ export default function SetAvatar() {
     }
   }
 
+  useEffect(() => {
+    const c = async () => {
+      const data = []
+      for (let i = 0; i < 4; i++) {
+        const image = await axios.get(
+          `${api}/${Math.round(Math.random() * 1000)}`,
+        )
+        const buffer = new Buffer(image.data)
+        data.push(buffer.toString('base64'))
+      }
+      setAvatars(data)
+      setIsLoading(false)
+    }
+    c()
+  }, [])
   return (
     <>
-      <Container>
-        <div className="title-container">
-          <h1>Pick an Avatar as your profile picture</h1>
-        </div>
-        <div className="avatars">
-          <div
-            className={`avatar ${selectedAvatar === 'eif' ? 'selected' : ''}`}
-          >
-            <img
-              src={eif}
-              alt="avatar"
-              onClick={() => setSelectedAvatar('eif')}
-            />
+      {isLoading ? (
+        <Container>
+          <img src={loader} alt="loader" className="loader" />
+        </Container>
+      ) : (
+        <Container>
+          <div className="title-container">
+            <h1>Pick an Avatar as your profile picture</h1>
           </div>
-          {/* //'rag' || 'nff' || 'eif' || 'gdz' */}
-          <div
-            className={`avatar ${selectedAvatar === 'gdz' ? 'selected' : ''}`}
-          >
-            <img
-              src={gdz}
-              alt="avatar"
-              onClick={() => setSelectedAvatar('gdz')}
-            />
+          <div className="avatars">
+            {avatars.map((avatar, index) => {
+              return (
+                <div
+                  className={`avatar ${
+                    selectedAvatar === index ? 'selected' : ''
+                  }`}
+                >
+                  <img
+                    src={`data:image/svg+xml;base64,${avatar}`}
+                    alt="avatar"
+                    key={avatar}
+                    onClick={() => setSelectedAvatar(index)}
+                  />
+                </div>
+              )
+            })}
           </div>
-          <div
-            className={`avatar ${selectedAvatar === 'nff' ? 'selected' : ''}`}
-          >
-            <img
-              src={nff}
-              alt="avatar"
-              onClick={() => setSelectedAvatar('nff')}
-            />
-          </div>
-          <div
-            className={`avatar ${selectedAvatar === 'rag' ? 'selected' : ''}`}
-          >
-            <img
-              src={rag}
-              alt="avatar"
-              onClick={() => setSelectedAvatar('rag')}
-            />
-          </div>
-        </div>
-        <button onClick={setProfilePicture} className="submit-btn">
-          Set as Profile Picture
-        </button>
-        <ToastContainer />
-      </Container>
+          <button onClick={setProfilePicture} className="submit-btn">
+            Set as Profile Picture
+          </button>
+          <ToastContainer />
+        </Container>
+      )}
     </>
   )
 }

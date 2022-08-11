@@ -1,61 +1,70 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-import Logo from "../assets/logo.svg";
+import React, { useState, useEffect } from 'react'
+import styled from 'styled-components'
+import Logo from '../assets/logo.svg'
 
 export default function Contacts({ contacts, changeChat }) {
-  const [currentUserName, setCurrentUserName] = useState(undefined);
-  const [currentUserImage, setCurrentUserImage] = useState(undefined);
-  const [currentSelected, setCurrentSelected] = useState(undefined);
+  const [currentUserName, setCurrentUserName] = useState(undefined)
+  const [currentUserImage, setCurrentUserImage] = useState(undefined)
+  const [currentSelected, setCurrentSelected] = useState(undefined)
   useEffect(() => {
     const c = async () => {
-    const data = await JSON.parse(
-      localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
-    );
-    setCurrentUserName(data.username);
-    setCurrentUserImage(data.avatarImage);
-    };c();
-  }, []);
+      const data = await JSON.parse(
+        localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY),
+      )
+      setCurrentUserName(data.username)
+      setCurrentUserImage(data.avatarImage)
+    }
+    c()
+  }, [])
   const changeCurrentChat = (index, contact) => {
-    setCurrentSelected(index);
-    changeChat(contact);
-  };
-  
+    setCurrentSelected(index)
+    changeChat(contact)
+  }
+
   return (
     <>
-      
-        <Container>
-          <div className="brand">
-            <img src={Logo} alt="logo" />
-            <h3>Tele-Chat</h3>
-          </div>
-          <div className="contacts">
-            {contacts.map((contact, index) => {
-              return (
-                <div
-                  key={contact._id}
-                  className={`contact ${
-                    index === currentSelected ? "selected" : ""
-                  }`}
-                  onClick={() => changeCurrentChat(index, contact)}
-                >
-                  
-                  <div className="username">
-                    <h3>{contact.username}</h3>
-                  </div>
+      <Container>
+        <div className="brand">
+          <img src={Logo} alt="logo" />
+          <h3>Tele-chat</h3>
+        </div>
+        <div className="contacts">
+          {contacts.map((contact, index) => {
+            return (
+              <div
+                key={contact._id}
+                className={`contact ${
+                  index === currentSelected ? 'selected' : ''
+                }`}
+                onClick={() => changeCurrentChat(index, contact)}
+              >
+                <div className="avatar">
+                  <img
+                    src={`data:image/svg+xml;base64,${contact.avatarImage}`}
+                    alt=""
+                  />
                 </div>
-              );
-            })}
+                <div className="username">
+                  <h3>{contact.username}</h3>
+                </div>
+              </div>
+            )
+          })}
+        </div>
+        <div className="current-user">
+          <div className="avatar">
+            <img
+              src={`data:image/svg+xml;base64,${currentUserImage}`}
+              alt="avatar"
+            />
           </div>
-          <div className="current-user">
-            
-            <div className="username">
-              <h2>{currentUserName}</h2>
-            </div>
+          <div className="username">
+            <h2>{currentUserName}</h2>
           </div>
-        </Container>
-      
+        </div>
+      </Container>
     </>
-  );
+  )
 }
 const Container = styled.div`
   display: grid;
@@ -100,7 +109,11 @@ const Container = styled.div`
       gap: 1rem;
       align-items: center;
       transition: 0.5s ease-in-out;
-      
+      .avatar {
+        img {
+          height: 3rem;
+        }
+      }
       .username {
         h3 {
           color: white;
@@ -111,7 +124,6 @@ const Container = styled.div`
       background-color: #9a86f3;
     }
   }
-
   .current-user {
     background-color: #0d0d30;
     display: flex;
@@ -138,4 +150,4 @@ const Container = styled.div`
       }
     }
   }
-`;
+`

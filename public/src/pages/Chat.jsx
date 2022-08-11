@@ -1,55 +1,69 @@
-import React, { useEffect, useState, useRef } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import { io } from "socket.io-client";
-import styled from "styled-components";
-import { allUsersRoute, host } from "../utils/APIRoutes";
-import Contact from "../components/Contacts"
+import React, { useEffect, useState, useRef } from 'react'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
+import { io } from 'socket.io-client'
+import styled from 'styled-components'
+import { allUsersRoute, host } from '../utils/APIRoutes'
+import ChatContainer from '../components/ChatContainer'
+import Contacts from '../components/Contacts'
+import Welcome from '../components/Welcome'
 
 export default function Chat() {
-  const navigate = useNavigate();
-  const socket = useRef();
-  const [contacts, setContacts] = useState([]);
-  const [currentChat, setCurrentChat] = useState(undefined);
-  const [currentUser, setCurrentUser] = useState(undefined);
+  const navigate = useNavigate()
+  const socket = useRef()
+  const [contacts, setContacts] = useState([])
+  const [currentChat, setCurrentChat] = useState(undefined)
+  const [currentUser, setCurrentUser] = useState(undefined)
   useEffect(() => {
     const a = async () => {
-    if (!localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)) {
-      navigate("/login");
-    } else {
-      setCurrentUser(
-        await JSON.parse(
-          localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
+      if (!localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)) {
+        navigate('/login')
+      } else {
+        setCurrentUser(
+          await JSON.parse(
+            localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY),
+          ),
         )
-      );
-    }};a();
-  }, []);
+      }
+    }
+    a()
+  }, [])
   useEffect(() => {
     if (currentUser) {
-      socket.current = io(host);
-      socket.current.emit("add-user", currentUser._id);
+      socket.current = io(host)
+      socket.current.emit('add-user', currentUser._id)
     }
-  }, [currentUser]);
+  }, [currentUser])
   useEffect(() => {
     const n = async () => {
-    if (currentUser) {
-        const data = await axios.get(`${allUsersRoute}/${currentUser._id}`);
-        setContacts(data.data);
-      } };n();
-  }, [currentUser]);
-
+      if (currentUser) {
+        if (currentUser.isAvatarImageSet) {
+          const data = await axios.get(`${allUsersRoute}/${currentUser._id}`)
+          setContacts(data.data)
+        } else {
+          navigate('/setAvatar')
+        }
+      }
+    }
+    n()
+  }, [currentUser])
   const handleChatChange = (chat) => {
-    setCurrentChat(chat);
-  };
+    setCurrentChat(chat)
+  }
   return (
     <>
       <Container>
         <div className="container">
-        <Contact contacts={contacts} changeChat={handleChatChange}></Contact>
+          <Contacts contacts={contacts} changeChat={handleChatChange} />
+          {currentChat === undefined ? (
+            <Welcome />
+          ) : (
+            <ChatContainer currentChat={currentChat} socket={socket} />
+          )}
         </div>
       </Container>
     </>
-  );
+  )
 }
 
 const Container = styled.div`
@@ -71,4 +85,4 @@ const Container = styled.div`
       grid-template-columns: 35% 65%;
     }
   }
-`;
+`
