@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import Robot from '../assets/robot.gif'
@@ -13,6 +14,22 @@ export default function Welcome() {
     }
     g()
   }, [])
+=======
+import React, { useState, useEffect } from "react";
+import styled from "styled-components";
+import Robot from "../assets/robot.gif";
+export default function Welcome() {
+  const [userName, setUserName] = useState("");
+  useEffect(() => {
+    const g = async () => {
+    setUserName(
+      await JSON.parse(
+        localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
+      ).username
+    );
+      };g();
+  }, []);
+>>>>>>> ca4ea018ced3ad464a15faf3b0d04bb20cae3cb2
   return (
     <Container>
       <img src={Robot} alt="" />
@@ -21,7 +38,11 @@ export default function Welcome() {
       </h1>
       <h3>Please select a chat to Start messaging.</h3>
     </Container>
+<<<<<<< HEAD
   )
+=======
+  );
+>>>>>>> ca4ea018ced3ad464a15faf3b0d04bb20cae3cb2
 }
 
 const Container = styled.div`
@@ -36,4 +57,8 @@ const Container = styled.div`
   span {
     color: #4e0eff;
   }
+<<<<<<< HEAD
 `
+=======
+`;
+>>>>>>> ca4ea018ced3ad464a15faf3b0d04bb20cae3cb2

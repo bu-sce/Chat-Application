@@ -3,12 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "src/index.ts",
-
   "scripts": {
     "dev": "nodemon build/index.js",
     "start": "node build/index.js",
     "build": "rm -rf build/ && tsc",
-    "monitor": "tsc --watch"    
+    "monitor": "tsc --watch"
   },
   "keywords": [],
   "author": "",

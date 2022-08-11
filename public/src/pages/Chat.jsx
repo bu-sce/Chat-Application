@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useEffect, useState, useRef } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
@@ -7,6 +8,17 @@ import { allUsersRoute, host } from '../utils/APIRoutes'
 import ChatContainer from '../components/ChatContainer'
 import Contacts from '../components/Contacts'
 import Welcome from '../components/Welcome'
+=======
+import React, { useEffect, useState, useRef } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { io } from "socket.io-client";
+import styled from "styled-components";
+import { allUsersRoute, host } from "../utils/APIRoutes";
+import ChatContainer from "../components/ChatContainer";
+import Contact from "../components/Contacts"
+import Welcome from "../components/Welcome";
+>>>>>>> ca4ea018ced3ad464a15faf3b0d04bb20cae3cb2
 
 export default function Chat() {
   const navigate = useNavigate()
@@ -36,6 +48,7 @@ export default function Chat() {
   }, [currentUser])
   useEffect(() => {
     const n = async () => {
+<<<<<<< HEAD
       if (currentUser) {
         if (currentUser.isAvatarImageSet) {
           const data = await axios.get(`${allUsersRoute}/${currentUser._id}`)
@@ -47,6 +60,24 @@ export default function Chat() {
     }
     n()
   }, [currentUser])
+=======
+    if (currentUser) {
+        const data = await axios.get(`${allUsersRoute}/${currentUser._id}`);
+        setContacts(data.data);
+      } };n();
+  }, [currentUser]);
+  useEffect(() => {
+    const p = async () => {
+    if (currentUser) {
+      if (currentUser.isAvatarImageSet) {
+        const data = await axios.get(`${allUsersRoute}/${currentUser._id}`);
+        setContacts(data.data);
+      } else {
+        navigate("/setAvatar");
+      }
+    }};p();
+  }, [currentUser]);
+>>>>>>> ca4ea018ced3ad464a15faf3b0d04bb20cae3cb2
   const handleChatChange = (chat) => {
     setCurrentChat(chat)
   }
@@ -54,8 +85,13 @@ export default function Chat() {
     <>
       <Container>
         <div className="container">
+<<<<<<< HEAD
           <Contacts contacts={contacts} changeChat={handleChatChange} />
           {currentChat === undefined ? (
+=======
+        <Contact contacts={contacts} changeChat={handleChatChange}></Contact>
+        {currentChat === undefined ? (
+>>>>>>> ca4ea018ced3ad464a15faf3b0d04bb20cae3cb2
             <Welcome />
           ) : (
             <ChatContainer currentChat={currentChat} socket={socket} />
