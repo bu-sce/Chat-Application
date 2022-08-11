@@ -57,7 +57,7 @@ export default function Login() {
           JSON.stringify(data.user),
         )
 
-        navigate('/')
+        navigate('/chat')
       }
     }
   }
@@ -67,8 +67,8 @@ export default function Login() {
       <FormContainer>
         <form action="" onSubmit={(event) => handleSubmit(event)}>
           <div className="brand">
-            <img src={Logo} alt="logo" />
-            <h1>Tele-Chat !</h1>
+            
+            <h1><span>Tele-</span>Chat !</h1>
           </div>
           <input
             type="text"
@@ -102,7 +102,7 @@ const FormContainer = styled.div`
   justify-content: center;
   gap: 1rem;
   align-items: center;
-  background-color: #131324;
+  background-color: #f5f5f5;
   .brand {
     display: flex;
     align-items: center;
@@ -115,22 +115,26 @@ const FormContainer = styled.div`
       color: white;
       font-family: 'Pacifico', cursive;
     }
+    span{
+      color : #20272e;
+      font-family: "Pacifico", cursive;
+    }
   }
 
   form {
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    background-color: #00000076;
+    background-color: #0458f3;
     border-radius: 2rem;
     padding: 5rem;
   }
   input {
-    background-color: transparent;
+    background-color: #f5f5f5;
     padding: 1rem;
     border: 0.1rem solid #4e0eff;
     border-radius: 0.4rem;
-    color: white;
+    color: #20272e;
     width: 100%;
     font-size: 1rem;
     &:focus {
@@ -139,8 +143,8 @@ const FormContainer = styled.div`
     }
   }
   button {
-    background-color: #4e0eff;
-    color: white;
+    background-color: #20272e;
+    color: #f5f5f5;
     padding: 1rem 2rem;
     border: none;
     font-weight: bold;
@@ -149,14 +153,15 @@ const FormContainer = styled.div`
     font-size: 1rem;
     text-transform: uppercase;
     &:hover {
-      background-color: #4e0eff;
+      background-color: #f5f5f5;
+      color:#20272e;
     }
   }
   span {
     color: white;
     text-transform: uppercase;
     a {
-      color: #4e0eff;
+      color: #20272e;
       text-decoration: none;
       font-weight: bold;
     }

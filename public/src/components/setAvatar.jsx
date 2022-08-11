@@ -124,7 +124,8 @@ const Container = styled.div`
   }
   .title-container {
     h1 {
-      color: white;
+      color: #0458f3;
+      
     }
   }
   .avatars {
@@ -154,7 +155,7 @@ const Container = styled.div`
     }
   }
   .submit-btn {
-    background-color: #4e0eff;
+    background-color: #20272e;
     color: white;
     padding: 1rem 2rem;
     border: none;
@@ -164,7 +165,8 @@ const Container = styled.div`
     font-size: 1rem;
     text-transform: uppercase;
     &:hover {
-      background-color: #4e0eff;
+      background-color: #fff;
+      color:#20272e;
     }
   }
 `

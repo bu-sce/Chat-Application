@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import Logo from "../assets/bahaa_logo.svg";
+import {Link } from "react-router-dom";
+
 import IMG404 from "../assets/NotFound/404.svg";
 import Rocket from "../assets/NotFound/rocket.svg";
 import Earth from "../assets/NotFound/earth.svg";
@@ -14,23 +15,16 @@ const PageNotFound = () => {
       <Container>
         <div className="stars">
           <div className="custom-navbar">
-            <div className="brand-logo">
-              <img src={Logo} alt="brand_logo" width="80px" />
-            </div>
+            
             <div className="navbar-links">
               <ul>
                 <li>
-                  <h3>Home</h3>
+                <Link to="/login">Login</Link>
                 </li>
                 <li>
-                  <h3>about</h3>
+                <Link to="/register">Register</Link>
                 </li>
-                <li>
-                  <h3>Featurse</h3>
-                </li>
-                <li>
-                  <h3>demo</h3>
-                </li>
+                
               </ul>
             </div>
           </div>
@@ -38,7 +32,8 @@ const PageNotFound = () => {
 
         <div className="central-body">
           <img className="image-404" alt="404" src={IMG404} width="300px" />
-          <h2 className="btn-go-home">GO BACK HOME</h2>
+          <Link className="btn-go-home" to="/">Go Back Home !</Link>
+          
         </div>
 
         <div className="objects">

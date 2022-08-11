@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { io } from 'socket.io-client'
+import background from "../assets/background.png"
 import styled from 'styled-components'
 import { allUsersRoute, host } from '../utils/APIRoutes'
 import ChatContainer from '../components/ChatContainer'
@@ -53,12 +54,16 @@ export default function Chat() {
   return (
     <>
       <Container>
-        <div className="container">
+      <div className="container" >
           <Contacts contacts={contacts} changeChat={handleChatChange} />
           {currentChat === undefined ? (
             <Welcome />
           ) : (
-            <ChatContainer currentChat={currentChat} socket={socket} />
+            <div style={{ 
+              backgroundImage: `url(${background})` 
+            }}>
+            <ChatContainer  currentChat={currentChat} socket={socket} />
+            </div>
           )}
         </div>
       </Container>
@@ -74,7 +79,7 @@ const Container = styled.div`
   justify-content: center;
   gap: 1rem;
   align-items: center;
-  background-color: #131324;
+  background-color: #fff;
   .container {
     height: 85vh;
     width: 85vw;
