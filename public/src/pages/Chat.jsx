@@ -54,16 +54,14 @@ export default function Chat() {
   return (
     <>
       <Container>
-      <div className="container" >
+      <div className={`container ${
+                    currentChat === undefined ? '' : 'chat'
+                  }`} >
           <Contacts contacts={contacts} changeChat={handleChatChange} />
           {currentChat === undefined ? (
             <Welcome />
           ) : (
-            <div style={{ 
-              backgroundImage: `url(${background})` 
-            }}>
             <ChatContainer  currentChat={currentChat} socket={socket} />
-            </div>
           )}
         </div>
       </Container>
@@ -89,5 +87,8 @@ const Container = styled.div`
     @media screen and (min-width: 720px) and (max-width: 1080px) {
       grid-template-columns: 35% 65%;
     }
+  }
+  .chat{
+    background-image: url(${background})
   }
 `
