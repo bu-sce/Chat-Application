@@ -159,6 +159,10 @@ span{
       max-inline-size: 100%;
       display:block;
     }
+    button{
+      padding:0;
+      border:0;
+    }
     svg{
       position:absolute;
       left:0;
