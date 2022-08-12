@@ -28,9 +28,9 @@ import mongoose from 'mongoose';
             
             const obj = JSON.stringify(user);
            
-            const jjj = JSON.parse(obj);
+            const jsonData = JSON.parse(obj);
            
-            const data = {'_id' : jjj._id , 'username' : jjj.username , 'isAvatarImageSet' : jjj.isAvatarImageSet , 'avatarImage' : jjj.avatarImage}
+            const data = {'_id' : jsonData._id , 'username' : jsonData.username , 'isAvatarImageSet' : jsonData.isAvatarImageSet , 'avatarImage' : jsonData.avatarImage}
             
             return res.json({ status: true, user : data  });
             //generate JWT

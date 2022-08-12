@@ -8,8 +8,10 @@ const get_google  = passport.authenticate('google', {
 })
 
 const get_google_redirect = (req: any, res: Response, next: NextFunction) => {
-
-    res.cookie('user' , `${req.user.username}`).redirect('/auth/profile'); //expire after 1 min  ,{ expires: new Date(Date.now() + 60*1000)}
+    
+     res.cookie('user' , `${req.user.username}`)
+    .cookie('googleID' , `${req.user.googleId}`)
+    .redirect('/auth/profile'); //expire after 1 min  ,{ expires: new Date(Date.now() + 60*1000)}
 }
 
 export default { get_google ,get_google_redirect};
