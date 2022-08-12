@@ -41,6 +41,7 @@ export default function ChatInput({ handleSendMsg }) {
           value={msg}
         />
         <button type="submit">
+          {/* //react icon */}
           <IoMdSend />
         </button>
       </form>
@@ -51,13 +52,12 @@ export default function ChatInput({ handleSendMsg }) {
 const Container = styled.div`
   display: grid;
   align-items: center;
+  border-radius: 6rem;
   grid-template-columns: 5% 95%;
   background-color: #f5f5f5;
-  padding: 0 2rem;
-  @media screen and (min-width: 720px) and (max-width: 1080px) {
-    padding: 0 1rem;
-    gap: 1rem;
-  }
+  width: 85%;
+  padding: 0 1rem;
+  margin-left: 2rem;
   .button-container {
     display: flex;
     align-items: center;
@@ -71,8 +71,8 @@ const Container = styled.div`
         cursor: pointer;
       }
       .emoji-picker-react {
-        position: absolute;
-        top: -350px;
+        // position: absolute;
+        // top: -350px;
         background-color: #080420;
         box-shadow: 0 5px 10px #9a86f3;
         border-color: #9a86f3;
@@ -93,7 +93,7 @@ const Container = styled.div`
           border-color: #9a86f3;
         }
         .emoji-group:before {
-          background-color: #080420;
+          background-color: #29abff;
         }
       }
     }
@@ -104,14 +104,17 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     gap: 2rem;
+    justify-contents: space-between;
     background-color: #fff;
+
     input {
-      width: 90%;
+      width: 95%;
       height: 60%;
       background-color: transparent;
       color: #20272e;
       border: none;
       padding-left: 1rem;
+
       font-size: 1.2rem;
 
       &::selection {
@@ -129,15 +132,9 @@ const Container = styled.div`
       align-items: center;
       background-color: #20272e;
       border: none;
-      @media screen and (min-width: 720px) and (max-width: 1080px) {
-        padding: 0.3rem 1rem;
-        svg {
-          font-size: 1rem;
-        }
-      }
       svg {
         font-size: 2rem;
-        color: white;
+        color: #fff;
       }
     }
   }

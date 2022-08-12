@@ -2,13 +2,13 @@ import React, { useEffect, useState, useRef } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { io } from 'socket.io-client'
-import background from "../assets/background.png"
+import background from '../assets/background.png'
 import styled from 'styled-components'
 import { allUsersRoute, host } from '../utils/APIRoutes'
 import ChatContainer from '../components/ChatContainer'
 import Contacts from '../components/Contacts'
 import Welcome from '../components/Welcome'
-
+import bg from '../assets/bg.jpg'
 export default function Chat() {
   const navigate = useNavigate()
   const socket = useRef()
@@ -54,14 +54,12 @@ export default function Chat() {
   return (
     <>
       <Container>
-      <div className={`container ${
-                    currentChat === undefined ? '' : 'chat'
-                  }`} >
+        <div className={`container ${currentChat === undefined ? '' : 'chat'}`}>
           <Contacts contacts={contacts} changeChat={handleChatChange} />
           {currentChat === undefined ? (
             <Welcome />
           ) : (
-            <ChatContainer  currentChat={currentChat} socket={socket} />
+            <ChatContainer currentChat={currentChat} socket={socket} />
           )}
         </div>
       </Container>
@@ -77,18 +75,19 @@ const Container = styled.div`
   justify-content: center;
   gap: 1rem;
   align-items: center;
-  background-color: #fff;
+  box-shadow: 2px 2px 2px 1px #20272e;
+  background-color: white;
+  background-image: url("${bg}");
   .container {
-    height: 85vh;
-    width: 85vw;
+    border-radius: 5rem;
+    height: 90vh;
+    width: 90vw;
     background-color: #00000076;
+    box-shadow: 2px 2px 2px 1px #20272e;
     display: grid;
-    grid-template-columns: 25% 75%;
-    @media screen and (min-width: 720px) and (max-width: 1080px) {
-      grid-template-columns: 35% 65%;
-    }
+    grid-template-columns: 30% 70%;
   }
-  .chat{
-    background-image: url(${background})
+  .chat {
+    background-color: #f5ffffaa;
   }
 `

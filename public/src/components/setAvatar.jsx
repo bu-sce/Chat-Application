@@ -124,13 +124,16 @@ const Container = styled.div`
   }
   .title-container {
     h1 {
-      color: #0458f3;
-      
+      color: #20272e;
     }
   }
   .avatars {
     display: flex;
-    gap: 2rem;
+    gap: 1rem;
+    box-shadow: 2px 2px 2px 1px #20272e;
+    height: 20%;
+    border-radius: 2rem;
+    padding: 0.4rem;
     .avatar {
       cursor: pointer;
       border: 0.4rem solid transparent;
@@ -145,13 +148,14 @@ const Container = styled.div`
         transition: 0.5s ease-in-out;
       }
       img:hover {
-        border: 0.4rem solid #4e0eff;
+        border: 0.4rem solid #29abff;
         border-radius: 5rem;
       }
     }
     .selected {
-      border: 0.4rem solid #4e0eff;
-      border-radius: 5rem;
+      border: 0.3rem solid #29abff;
+      border-radius: 10rem;
+      padding: 1rem;
     }
   }
   .submit-btn {
@@ -161,12 +165,12 @@ const Container = styled.div`
     border: none;
     font-weight: bold;
     cursor: pointer;
-    border-radius: 0.4rem;
-    font-size: 1rem;
+    border-radius: 5rem;
+    font-size: 1.1rem;
     text-transform: uppercase;
     &:hover {
-      background-color: #fff;
-      color:#20272e;
+      background-color: #29abff;
+      color: #fff;
     }
   }
 `
