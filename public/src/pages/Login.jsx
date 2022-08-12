@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
 import { useNavigate, Link } from 'react-router-dom'
+import bg from '../assets/bg.jpg'
+import { FcGoogle} from 'react-icons/fc'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import { loginRoute } from '../utils/APIRoutes'
-import bg from '../assets/bg.webp'
+import { loginRoute,loginWithGoogle } from '../utils/APIRoutes'
+
 export default function Login() {
   const navigate = useNavigate()
   // in login we only need the username and password
@@ -60,19 +62,30 @@ export default function Login() {
       }
     }
   }
+  const handleGoogle = async(e)=>{
+    e.preventDefault();
+    const { googleData } = await axios.get(loginWithGoogle)
+    console.log(googleData)
+    if (googleData.status === true) {
+      localStorage.setItem(
+        process.env.REACT_APP_LOCALHOST_KEY,
+        JSON.stringify(googleData.user),
+      )
 
+      navigate('/chat')
+    }
+  }
   return (
     <>
       <FormContainer>
         <form action="" onSubmit={(event) => handleSubmit(event)}>
-          <div className="brand">
-            <h1>
-              <span>Tele-</span>Chat !
-            </h1>
-          </div>
+          <h1><span>Tele-</span>Chat !</h1>
+          <span className="greeting">Great To See You!</span>
+          
           <input
             type="text"
             placeholder="Username"
+            
             name="username"
             onChange={(e) => handleChange(e)}
             min="3"
@@ -81,15 +94,18 @@ export default function Login() {
             type="password"
             placeholder="Password"
             name="password"
+           
             onChange={(e) => handleChange(e)}
           />
-          <button type="submit">Log In</button>
-          <span>
+          <button className='log' type="submit">Log In</button>
+          
+          <span className='register'>
             Don't have an account ? <Link to="/register">Create One.</Link>
           </span>
+          <h2><span>or</span></h2>
+          <button className="google" onClick={handleGoogle}><span className='icon'><FcGoogle /></span><span className='text'>Log In With Google</span></button>
         </form>
       </FormContainer>
-
       <ToastContainer />
     </>
   )
@@ -102,12 +118,31 @@ const FormContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   gap: 1rem;
+  background-image: url("${bg}");
+  background-size: 3500px;
   align-items: center;
-  background-color:#f5f5f5;
-  // background-color: rgba(0,0,0,.2);
-  // background-image: url('${bg}');
-  // background-color: rgba(0,0,0,.1);
-  // background-blend-mode: multiply;
+  background-color: #eee;
+  h1 {
+    color: #0458f3;
+    text-align:center;
+    font-family: 'Pacifico', cursive;
+    margin-bottom:0px;
+    font-weight:bold;
+    letter-spacing: 0.15rem;
+    span{
+      color:#20272e ;
+      font-weight:normal;
+      
+    }
+  }
+  .greeting{
+    font-family: Poppins,sans-serif;
+    color:#20272e;
+    font-wight:300;
+    font-size:24px;
+    text-transform:none;
+    text-align:center;
+  }
   .brand {
     display: flex;
     align-items: center;
@@ -116,73 +151,158 @@ const FormContainer = styled.div`
     img {
       height: 5rem;
     }
-    h1 {
-      color: white;
-      font-family: 'Pacifico', cursive;
-    }
-    span {
-      color: #20272e;
-      font-family: 'Pacifico', cursive;
+    
+    span{
+      color : #20272e;
+      font-family: "Pacifico", cursive;
     }
   }
 
   form {
-    box-shadow: 3px 3px 3px 3px  #20272e;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    // background-color: #f5f5f5;
-    background-color: rgba(41, 171, 255, .8);
+    gap: 1.7rem;
+    padding: 0 80px 40px 40px;
+    background-color: #fff;
     border-radius: 2rem;
     padding: 5rem;
-    padding-bottom: 6rem;
-    padding-top: 1rem;
-   
-    height: 50%;
+    padding-top:20px;
   }
   input {
-    background-color: #f5f5f5;
-    padding: 1rem;
-    border-bottom: 2px solid #20272e;
-    border-top:none;
-    border-right:none;
-    border-radius: 0.4rem;
+    padding-top:1.5rem;
+    border-right: none;
+    border-top: none;
+    border-left: none;
+    border-bottom: 1px solid #ced4da;
     color: #20272e;
-    // font-weight: bold;
-    width: 89%;
-    font-size: 1rem;
+    background-color:#fff;
+    padding-left:10px;
+    padding-bottom:10px;
+    width: 100%;
+    font-size: 1.2rem;
+    transition: border-color .20s ease-in-out,box-shadow .15s ease-in-out;
     &:focus {
-      border: 0.1rem solid #20272e;
+      border-bottom: 0.1rem solid #20272e;
       outline: none;
     }
-    &::placeholder {
-      color: #20272e;
+    ::selection{
+      background-color:#20272e;
+      color:#fff;
     }
+    input:-webkit-autofill {
+      border: 3px solid blue;
+      color:#fff;
+    }
+    input:autofill {
+      border: 3px solid blue;
+      color:#fff;
+    } 
+    
   }
-  button {
-    background-color: #20272e;
+  input:-webkit-autofill,
+  input:-webkit-autofill:focus {
+     transition: background-color 600000s 0s, color 600000s 0s;
+    color:#fff;
+  }
+  
+  input:last-of-type{
+    margin-bottom:1rem;
+    padding-top: 10px;
+  }
+  .log {
+    background-color: #0458f3;
     color: #f5f5f5;
-    padding: 1rem;
+    padding: 1rem 2rem;
     border: none;
     font-weight: bold;
     cursor: pointer;
-    border-radius: 0.4rem;
     font-size: 1rem;
-    width: 100%;
+    border-radius:7px;
+    transition: background-color .35s ease-in-out,box-shadow .15s ease-in-out;
     text-transform: uppercase;
     &:hover {
-      background-color: #f5f5f5;
-      color: #20272e;
+      background-color: #20272e;
+      color:#fff;
     }
   }
-
-  span {
-    color: #ffffff;
+  .google{
+    border: none;
+    transition: background-color .35s ease-in-out,box-shadow .15s ease-in-out;
+    padding: 0;
+    font-weight: bold;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #0458f3;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius:7px;
+    .icon{
+      -webkit-flex: 1;
+      -ms-flex: 1;
+      flex: 1;
+      border-radius:7px;
+      padding: 10px;
+      background-color: #fff;
+      margin:2px;
+      svg{
+      font-size: 18px;
+      color:#fff;
+      }
+    }
+    .text{
+      -webkit-flex: 12;
+      -ms-flex: 12;
+      -webkit-flex: 12;
+      -ms-flex: 12;
+      flex: 12;
+      padding: 10px;
+      line-height: 26px;
+    }
+    
+  }
+  .google:hover{
+    background-color: #20272e;
+      color:#fff;
+    .icon{
+      background-color: #fff;
+      
+      svg{
+        color:#fff;
+        
+      }
+    }
+  }
+  h2 {
+    width: 100%; 
+    text-align: center; 
+    border-bottom: 1px solid #ced4da; 
+    line-height: 0.1em;
+    margin: 10px 0 20px; 
+ } 
+ 
+ h2 span { 
+  font-size: 1.3rem;
+  background: #fff;
+  font-family: 'Fira Sans', sans-serif;
+  letter-spacing: 0.1rem;
+  padding: 0 10px;
+ }
+  .register {
+    margin-top:10px;
+    color: #20272e;
     text-transform: uppercase;
     a {
       color: #20272e;
       text-decoration: none;
       font-weight: bold;
     }
+    a:hover{
+      color:#0458f3;
+    }
   }
+  
 `

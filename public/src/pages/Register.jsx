@@ -3,11 +3,12 @@ import axios from "axios";
 import styled from "styled-components";
 import { useNavigate, Link } from "react-router-dom";
 import Logo from "../assets/bahaa_logo.svg";
-import background from "../assets/background.png";
+import { FcGoogle} from 'react-icons/fc'
+import bg from '../assets/bg.jpg'
 import introGif from "../assets/introGif.gif";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { registerRoute } from "../utils/APIRoutes";
+import { registerRoute,loginWithGoogle } from "../utils/APIRoutes";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -88,7 +89,19 @@ const Register = () => {
       }
     }
   };
+  const handleGoogle = async(e)=>{
+    e.preventDefault();
+    const { googleData } = await axios.get(loginWithGoogle)
+    console.log(googleData)
+    if (googleData.status === true) {
+      localStorage.setItem(
+        process.env.REACT_APP_LOCALHOST_KEY,
+        JSON.stringify(googleData.user),
+      )
 
+      navigate('/chat')
+    }
+  }
   return (
     <>
       <FormContainer>
@@ -126,6 +139,8 @@ const Register = () => {
           <span>
             Already have an account ? <Link to="/login">Login.</Link>
           </span>
+          <h2><span>or</span></h2>
+          <button className="google" onClick={handleGoogle}><span className='icon'><FcGoogle /></span><span className='text'>Sign Up With Google</span></button>
         </form>
       </FormContainer>
       <ToastContainer />
@@ -140,8 +155,10 @@ const FormContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   gap: 1rem;
+  background-image: url("${bg}");
+  background-size: 3500px;
   align-items: center;
-  background-color: #f5f5f5;
+  background-color: #eee;
   .brand {
     display: flex;
     align-items: center;
@@ -153,35 +170,67 @@ const FormContainer = styled.div`
     span{
       color : #20272e;
       font-family: "Pacifico", cursive;
+      text-transform: none;
+      font-weight:normal;
     }
     h1 {
-      color: white;
+      color: #0458f3;
       font-family: "Pacifico", cursive;
+      letter-spacing: 0.15rem;
+      margin:0;
     }
   }
   form {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    background-color: #0458f3;
-    border-radius: 2rem;
-    padding: 3rem 5rem;
+    gap: 1.3rem;
+    background-color: #fff;
+    border-radius: 1.5rem;
+    padding: 2rem 6rem;
   }
   input {
-    background-color: #f5f5f5;
-    padding: 1rem;
-    border: 0.1rem solid #4e0eff;
-    border-radius: 0.4rem;
+    padding-top:1.5rem;
+    border-right: none;
+    border-top: none;
+    border-left: none;
+    border-bottom: 1px solid #ced4da;
     color: #20272e;
+    background-color:#fff;
+    padding-left:10px;
+    padding-bottom:10px;
     width: 100%;
-    font-size: 1rem;
+    font-size: 1.2rem;
+    transition: border-color .20s ease-in-out,box-shadow .15s ease-in-out;
     &:focus {
-      border: 0.1rem solid #997af0;
+      border-bottom: 0.1rem solid #20272e;
       outline: none;
     }
+    ::selection{
+      background-color:#20272e;
+      color:#fff;
+    }
+    input:-webkit-autofill {
+      border: 3px solid blue;
+      color:#fff;
+    }
+    input:autofill {
+      border: 3px solid blue;
+      color:#fff;
+    } 
+    
+  }
+  input:-webkit-autofill,
+  input:-webkit-autofill:focus {
+     transition: background-color 600000s 0s, color 600000s 0s;
+    color:#fff;
+  }
+  
+  input:last-of-type{
+    margin-bottom:1rem;
+    padding-top: 10px;
   }
   button {
-    background-color: #20272e;
+    background-color:  #0458f3;
     color: white;
     padding: 1rem 2rem;
     border: none;
@@ -191,18 +240,90 @@ const FormContainer = styled.div`
     font-size: 1rem;
     text-transform: uppercase;
     &:hover {
-      background-color: #f5f5f5;
-      color : #20272e;
+      background-color: #20272e;
+      color : #fff;
     }
   }
   span {
-    color: white;
+    color: #20272e;
     text-transform: uppercase;
     a {
       color: #20272e;
       text-decoration: none;
       font-weight: bold;
     }
+    a:hover{
+      color:#0458f3;
+    }
   }
+  .google{
+    border: none;
+    transition: background-color .35s ease-in-out,box-shadow .15s ease-in-out;
+    padding: 0;
+    font-weight: bold;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #0458f3;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius:7px;
+    .icon{
+      -webkit-flex: 1;
+      -ms-flex: 1;
+      flex: 1;
+      border-radius:7px;
+      padding: 10px;
+      background-color: #fff;
+      margin:2px;
+      svg{
+      font-size: 18px;
+      color:#fff;
+      }
+    }
+    .text{
+      -webkit-flex: 12;
+      -ms-flex: 12;
+      -webkit-flex: 12;
+      -ms-flex: 12;
+      flex: 12;
+      color:#fff;
+      padding: 10px;
+      line-height: 26px;
+      text-transform:none;
+    }
+    
+  }
+  .google:hover{
+    background-color: #20272e;
+      color:#fff;
+    .icon{
+      background-color: #fff;
+      
+      svg{
+        color:#fff;
+        
+      }
+    }
+  }
+  h2 {
+    width: 100%; 
+    text-align: center; 
+    border-bottom: 1px solid #ced4da; 
+    line-height: 0.1em;
+    margin: 10px 0 20px; 
+ } 
+ 
+ h2 span { 
+  font-size: 1.3rem;
+  background: #fff;
+  font-family: 'Fira Sans', sans-serif;
+  letter-spacing: 0.1rem;
+  padding: 0 10px;
+  text-transform:none;
+ }
 `;
 export default Register;
