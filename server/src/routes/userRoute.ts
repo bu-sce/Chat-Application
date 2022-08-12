@@ -1,7 +1,7 @@
 import express from 'express';
 import controller from '../controllers/userController';
-import refreshTokenController from '../controllers/refreshTokenController';
-import verifyJWT from '../middleware/authMiddleware'
+// import refreshTokenController from '../controllers/refreshTokenController';
+// import verifyJWT from '../middleware/authMiddleware'
 
 const router = express.Router();
 
