@@ -9,7 +9,7 @@ import Logging from './library/Logging';
 import Logger from './middleware/Logger';
 import API_Rules from './middleware/apiRules';
 import ErrorHandler from './middleware/errorHandler';
-import verifyJWT from './middleware/authMiddleware'
+// import verifyJWT from './middleware/authMiddleware'
 import googleOuth  from './routes/google-oauth';
 require('./config/passport-setup');
 import userRoutes from './routes/userRoute';
