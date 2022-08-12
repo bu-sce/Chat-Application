@@ -1,20 +1,20 @@
-import "./Landing.css";
-import { Link } from "react-router-dom";
-import Bahaa from "../assets/bahaa.png";
-import Ammar from "../assets/ammar.png";
-import Shrouk from "../assets/Shrouk.png";
-import Diaa from "../assets/diaa.png";
-import Karim from "../assets/karim.png";
-import Abdo from "../assets/abdo.png";
+import './Landing.css'
+import { Link } from 'react-router-dom'
+import Bahaa from '../assets/bahaa.png'
+import Ammar from '../assets/ammar.png'
+import Shrouk from '../assets/Shrouk.png'
+import Diaa from '../assets/diaa.png'
+import Karim from '../assets/karim.png'
+import Abdo from '../assets/abdo.png'
 
-import close from "./Img/close.svg";
+import close from './Img/close.svg'
 
 //import holdingPhone from "./Img/holding-phone.jpg";
-import illustration from "./Img/chat.gif";
+import illustration from './Img/chat.gif'
 
-import menu from "./Img/menu.svg";
+import menu from './Img/menu.svg'
 
-import video from "./Img/video.svg";
+import video from './Img/video.svg'
 
 function App() {
   return (
@@ -103,12 +103,12 @@ function App() {
       <center
         id="team-members"
         style={{
-          backgroundColor: "#0458f3",
-          color: "#FFFFFF",
-          fontSize: "80px",
-          padding: "30px",
-          fontWeight: "bold",
-          fontFamily: "Pacifico",
+          backgroundColor: '#29abff',
+          color: '#FFFFFF',
+          fontSize: '80px',
+          padding: '30px',
+          fontWeight: 'bold',
+          fontFamily: 'Pacifico',
         }}
       >
         Meet our team!
@@ -172,7 +172,7 @@ function App() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
