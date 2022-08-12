@@ -1,18 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400&display=swap");
 /* --- MAIN STYLE ---*/
 :root {
-  --primary-color:#20272e; 
-  /* //#29abff; */
-  /* --primary-color: rgb(4, 88, 243); */
+  --primary-color: rgb(4, 88, 243);
 }
 
 body {
   background: #f5f5f5;
   margin: 0;
   font-family: "Poppins", sans-serif;
-
 }
-
 
 a {
   color: #444;
@@ -37,14 +33,14 @@ section {
 .nav-bar .logo-nav {
   text-decoration: none;
   font-weight: bold;
-  color: var(--primary-color);
+  color: #000;
   font-size: 1.2em;
 }
 #brand-font {
   font-family: "Pacifico", cursive;
 }
 .nav-bar .logo-nav span {
-  color: #29abff;
+  color: var(--primary-color);
 }
 
 .nav-bar nav {
@@ -84,7 +80,7 @@ section {
 }
 
 .primery-cta {
-  background-color: #29abff;
+  background-color: var(--primary-color);
   color: #fff;
   text-decoration: none;
   padding: 0.6em 1.3em;
@@ -110,8 +106,6 @@ section {
 .hero-img {
   width: 80%;
   margin-top: 3em;
-  /* color:#29abff; */
-  
 }
 
 /* --- FEATURES STYLE ---*/
@@ -189,10 +183,6 @@ nav li a {
 
 nav li a:hover {
   font-weight: bold;
-  border: 3px solid var(--primary-color) ;
-  border-radius: 5em;
-  background-color: var(--primary-color);
-  color:white;
 }
 
 .mobile-menu-exit {
@@ -245,12 +235,10 @@ nav li a:hover {
   }
   .nav-bar li.current a {
     font-weight: bold;
-
-
   }
   .nav-bar li.go-premium-cta a {
     color: var(--primary-color);
-    border: 3px solid #29abff;
+    border: 3px solid var(--primary-color);
     border-radius: 5em;
     font-weight: bold;
     margin-top: -0.2em;
@@ -258,8 +246,6 @@ nav li a:hover {
   .nav-bar li.go-premium-cta a:hover {
     background-color: var(--primary-color);
     color: #fff;
-    border: 3px solid var(--primary-color);
-
   }
 }
 
@@ -379,7 +365,7 @@ nav li a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #29abff;
+    background-color: rgb(4, 88, 243);
   }
 
   .profile-card {

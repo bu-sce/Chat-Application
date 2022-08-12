@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 import styled from 'styled-components'
 import Logo from '../assets/logo.svg'
 import { TbCameraPlus } from 'react-icons/tb'
@@ -8,7 +8,7 @@ export default function Contacts({ contacts, changeChat }) {
   const [currentUserName, setCurrentUserName] = useState(undefined)
   const [currentUserImage, setCurrentUserImage] = useState(undefined)
   const [currentSelected, setCurrentSelected] = useState(undefined)
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   useEffect(() => {
     const c = async () => {
       const data = await JSON.parse(
@@ -23,17 +23,16 @@ export default function Contacts({ contacts, changeChat }) {
     setCurrentSelected(index)
     changeChat(contact)
   }
-  function handleChangeAvatar() {
-    navigate('/setavatar')
+   function handleChangeAvatar(){
+    navigate("/setavatar");
   }
 
   return (
     <>
       <Container>
         <div className="brand">
-          <h3>
-            <span>Tele-</span>Chat !
-          </h3>
+          <img src={Logo} alt="logo" />
+          <h3><span>Tele-</span>Chat !</h3>
         </div>
         <div className="contacts">
           {contacts.map((contact, index) => {
@@ -64,9 +63,10 @@ export default function Contacts({ contacts, changeChat }) {
               src={`data:image/svg+xml;base64,${currentUserImage}`}
               alt="avatar"
             />
-            <button onClick={handleChangeAvatar}>
-              <TbCameraPlus />
-            </button>
+             <button onClick={handleChangeAvatar}>
+               <TbCameraPlus />
+             </button>
+            
           </div>
           <div className="username">
             <h2>{currentUserName}</h2>
@@ -77,122 +77,114 @@ export default function Contacts({ contacts, changeChat }) {
   )
 }
 const Container = styled.div`
-  display: grid;
-  grid-template-rows: 10% 75% 15%;
-  box-shadow: 2px 2px 2px 1px #20272e;
-  border-radius: 2rem;
-  overflow: hidden;
-  background-color: #f5f5f5;
-  .brand {
-    background-color: white;
-    margin-bottom: 0px;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    justify-content: center;
-    h3 {
-      color: #29abff;
+display: grid;
+grid-template-rows: 10% 75% 15%;
+overflow: hidden;
+background-color: #f5f5f5;
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+  img {
+    height: 2rem;
+  }
+  h3 {
+      color: #0458f3;
       font-family: 'Pacifico', cursive;
-      font-size: 25px;
-    }
+      font-size:30px;
   }
-  span {
-    color: #20272e;
-  }
-  .contacts {
-    display: flex;
-    padding-top: 10px;
-    flex-direction: column;
-    align-items: center;
-    overflow: auto;
-    gap: 0.8rem;
-    &::-webkit-scrollbar {
-      width: 0.4rem;
-      &-thumb {
-        background-color: #29abff;
-        width: 0.1rem;
-        border-radius: 1rem;
-      }
-    }
-    .contact {
-      background-color: #f5f5f5;
-      min-height: 3.4rem;
-      cursor: pointer;
-      width: 90%;
+}
+span{
+  color:#20272e;
+}
+.contacts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: auto;
+  gap: 0.8rem;
+  &::-webkit-scrollbar {
+    width: 0.4rem;
+    &-thumb {
+      background-color: #20272e;
+      width: 0.1rem;
       border-radius: 1rem;
-      padding-top: 0.4rem;
-      padding-left: 0.4rem;
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-      transition: 0.3s ease-in-out;
-      .avatar {
-        img {
-          height: 2.8rem;
-        }
-      }
-      .username {
-        h3 {
-          color: #20272e;
-          text-transform: capitalize;
-        }
-      }
-      &:hover {
-        background-color: white;
-      }
-    }
-    .selected {
-      background-color: #29abff;
-      .username {
-        h3 {
-          color: #fff;
-          text-transform: capitalize;
-        }
-      }
-      &:hover {
-        background-color: #fff;
-        .username {
-          h3 {
-            color: #29abff;
-          }
-        }
-      }
     }
   }
-  .current-user {
-    background-color: #20272e;
-    background-color: rgba(0, 0, 0, 0.8);
+  .contact {
+    background-color: #fff;
+    min-height: 5rem;
+    cursor: pointer;
+    width: 90%;
+    border-radius: 0.2rem;
+    padding: 0.4rem;
     display: flex;
-    justify-content: center;
+    gap: 1rem;
     align-items: center;
-    gap: 2rem;
+    transition: 0.3s ease-in-out;
     .avatar {
-      position: relative;
       img {
         height: 3rem;
-        max-inline-size: 100%;
-        display: block;
-      }
-      button {
-        padding: 0;
-        border: 0;
-      }
-      svg {
-        position: absolute;
-        left: 0;
-        top: 0;
-        background-color: #20272e;
-        color: #fff;
-        font-size: 1.2rem;
-        cursor: pointer;
       }
     }
     .username {
+      h3 {
+        color: #20272e;
+      }
+      
+    }
+  }
+  .selected {
+    background-color: #20272e;
+  }
+  .selected {
+    h3{
+      color:#fff !important;
+     }
+  }
+   
+}
+.current-user {
+  background-color: #20272e;
+  display: flex;
+  
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  .avatar {
+    position:relative;
+    img {
+      height: 4rem;
+      max-inline-size: 100%;
+      display:block;
+    }
+    button{
+      padding:0;
+      border:0;
+    }
+    svg{
+      position:absolute;
+      left:0;
+      top:0;
+      background-color:#20272e;
+      color:#fff;
+      font-size:1.2rem;
+      cursor:pointer;
+    }
+  }
+  .username {
+    h2 {
+      color: white;
+    }
+  }
+  @media screen and (min-width: 720px) and (max-width: 1080px) {
+    gap: 0.5rem;
+    .username {
       h2 {
-        color: white;
-        text-transform: capitalize;
+        font-size: 1rem;
       }
     }
   }
+}
 `

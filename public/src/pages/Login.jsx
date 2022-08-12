@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
 import { useNavigate, Link } from 'react-router-dom'
+import Logo from '../assets/bahaa_logo.svg'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { loginRoute } from '../utils/APIRoutes'
-import bg from '../assets/bg.webp'
+
 export default function Login() {
   const navigate = useNavigate()
   // in login we only need the username and password
@@ -66,9 +67,8 @@ export default function Login() {
       <FormContainer>
         <form action="" onSubmit={(event) => handleSubmit(event)}>
           <div className="brand">
-            <h1>
-              <span>Tele-</span>Chat !
-            </h1>
+            
+            <h1><span>Tele-</span>Chat !</h1>
           </div>
           <input
             type="text"
@@ -89,7 +89,6 @@ export default function Login() {
           </span>
         </form>
       </FormContainer>
-
       <ToastContainer />
     </>
   )
@@ -103,11 +102,7 @@ const FormContainer = styled.div`
   justify-content: center;
   gap: 1rem;
   align-items: center;
-  background-color:#f5f5f5;
-  // background-color: rgba(0,0,0,.2);
-  // background-image: url('${bg}');
-  // background-color: rgba(0,0,0,.1);
-  // background-blend-mode: multiply;
+  background-color: #f5f5f5;
   .brand {
     display: flex;
     align-items: center;
@@ -120,64 +115,50 @@ const FormContainer = styled.div`
       color: white;
       font-family: 'Pacifico', cursive;
     }
-    span {
-      color: #20272e;
-      font-family: 'Pacifico', cursive;
+    span{
+      color : #20272e;
+      font-family: "Pacifico", cursive;
     }
   }
 
   form {
-    box-shadow: 3px 3px 3px 3px  #20272e;
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    // background-color: #f5f5f5;
-    background-color: rgba(41, 171, 255, .8);
+    background-color: #0458f3;
     border-radius: 2rem;
     padding: 5rem;
-    padding-bottom: 6rem;
-    padding-top: 1rem;
-   
-    height: 50%;
   }
   input {
     background-color: #f5f5f5;
     padding: 1rem;
-    border-bottom: 2px solid #20272e;
-    border-top:none;
-    border-right:none;
+    border: 0.1rem solid #4e0eff;
     border-radius: 0.4rem;
     color: #20272e;
-    // font-weight: bold;
-    width: 89%;
+    width: 100%;
     font-size: 1rem;
     &:focus {
-      border: 0.1rem solid #20272e;
+      border: 0.1rem solid #997af0;
       outline: none;
-    }
-    &::placeholder {
-      color: #20272e;
     }
   }
   button {
     background-color: #20272e;
     color: #f5f5f5;
-    padding: 1rem;
+    padding: 1rem 2rem;
     border: none;
     font-weight: bold;
     cursor: pointer;
     border-radius: 0.4rem;
     font-size: 1rem;
-    width: 100%;
     text-transform: uppercase;
     &:hover {
       background-color: #f5f5f5;
-      color: #20272e;
+      color:#20272e;
     }
   }
-
   span {
-    color: #ffffff;
+    color: white;
     text-transform: uppercase;
     a {
       color: #20272e;
