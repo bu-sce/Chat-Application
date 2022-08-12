@@ -25,6 +25,14 @@ import mongoose from 'mongoose';
             const isPasswordValid = await bcrypt.compare(password, user.password);
             if (!isPasswordValid) return res.json({ msg: 'Incorrect Username or Password', status: false });
             delete user.password;
+            
+            const obj = JSON.stringify(user);
+           
+            const jjj = JSON.parse(obj);
+           
+            const data = {'_id' : jjj._id , 'username' : jjj.username , 'isAvatarImageSet' : jjj.isAvatarImageSet , 'avatarImage' : jjj.avatarImage}
+            
+            return res.json({ status: true, user : data  });
             //generate JWT
             // const aToken = accessToken(user._id);
             // const rToken = refreshToken(user._id);
@@ -117,7 +125,7 @@ const logOut = async (req : Request, res : Response, next : NextFunction) => {
         //   foundUserToLogout.refreshToken = '';
         //   await foundUserToLogout.save();
         //   res.removeHeader('authorization');
-          res.status(200).redirect("http://localhost:3000/"); 
+          res.status(200).send();//.redirect("http://localhost:3000/"); 
     } catch (ex) {
       next(ex);
     }
