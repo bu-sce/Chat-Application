@@ -9,11 +9,10 @@
     <p align="center">
        	<a href="#key-features">Features</a> •
   		<a href="#technologies-used">Technologies Used</a> •
-  		<a href="#how-to-use-:pencil:">How To Use</a> •
-  		<a href="#demo-:robot:">Demo</a> •
+  		<a href="https://github.com/bu-sce/Chat-Application#how-to-use-pencil">How To Use</a> •
+  		<a href="https://github.com/bu-sce/Chat-Application#demo-robot">Demo</a> •
  		<a href="#team">Team</a> •
-  		<a href="#credits-:handshake:">Credits</a> •
-  		<a href="#license-:bookmark:">License</a>    
+  		<a href="https://github.com/bu-sce/Chat-Application#license-bookmark">License</a>    
 	</p>
 </h6>
 
@@ -38,7 +37,6 @@
     <img src="https://socket.io/images/logo-dark.svg" width="65" height="65" />
     <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original-wordmark.svg" alt="mongodb" width="80" height="80" />
     <img src="https://camo.githubusercontent.com/b7ea09b0c030ae14623cfc3a52ab3ee0d07e0259a1b230139e65ba00454327c9/68747470733a2f2f70726f66696c696e61746f722e7269736861762e6465762f736b696c6c732d6173736574732f6769742d73636d2d69636f6e2e737667" width="60" height="60" />
-    <img src="https://github.com/hussainweb/hussainweb/raw/main/icons/vscode.png" width="60" height="60" />
     <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/heroku/heroku-plain.svg" alt="heroku" width="60" height="60" /></p>
 
 ## How To Use :pencil:
@@ -90,8 +88,6 @@ This project was created with all the love and passion from the following talent
     <td align="center"><a href="https://github.com/BU9D4DDY"><img src="https://scontent.fcai19-6.fna.fbcdn.net/v/t39.30808-6/241967366_374834414103110_2929536388284615253_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=174925&_nc_ohc=JJxpqPtQvlEAX_6MVjF&_nc_ht=scontent.fcai19-6.fna&oh=00_AT-8zzkhLipWaKpBRTjB7Ndy7tsicrH50z_pHNUb4sQ3Dw&oe=62FB9A8A" width="100px;" alt=""/><br /><sub><b>Diaa Hassan</b></sub></a><br /></td>
     </tr>
 </table>
-## Credits :handshake:
-
 
 
 
