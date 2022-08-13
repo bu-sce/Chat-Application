@@ -1,4 +1,4 @@
-export const host = "http://localhost:9090";
+export const host = "https://tele-chat-api.herokuapp.com";
 export const loginRoute = `${host}/api/auth/login`;
 export const registerRoute = `${host}/api/auth/register`;
 export const logoutRoute = `${host}/api/auth/logout`;
