@@ -3,6 +3,7 @@
 </h1>
 
 
+
 <h5 align="center">A minimal chat application that can be used as an internal asset for any organization that wants its employees to be connected internally.</h5>
 
 <h6>
@@ -15,6 +16,7 @@
   		<a href="https://github.com/bu-sce/Chat-Application#license-bookmark">License</a>    
 	</p>
 </h6>
+
 
 
 ## Key Features
@@ -32,12 +34,14 @@
 	<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="60" height="60" />
 	<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" alt="typescript" width="60" height="60" />
     <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" alt="react" width="60" height="60"  />
-    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" alt="nodejs" width="90" height="130"  />
+    <img src="./_assets/node.png" alt="nodejs" width="86" height="75"  />
     <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original-wordmark.svg" alt="express" width="75" height="110"/>
     <img src="https://socket.io/images/logo-dark.svg" width="65" height="65" />
     <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original-wordmark.svg" alt="mongodb" width="80" height="80" />
     <img src="https://camo.githubusercontent.com/b7ea09b0c030ae14623cfc3a52ab3ee0d07e0259a1b230139e65ba00454327c9/68747470733a2f2f70726f66696c696e61746f722e7269736861762e6465762f736b696c6c732d6173736574732f6769742d73636d2d69636f6e2e737667" width="60" height="60" />
     <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/heroku/heroku-plain.svg" alt="heroku" width="60" height="60" /></p>
+
+
 
 ## How To Use :pencil:
 
@@ -73,7 +77,7 @@ If You don't wanna try it locally, don't worry, We got you covered.
 
 This application is now up and running on <<<>>>>, Go give it a check.
 
-## Team<img src="https://camo.githubusercontent.com/ec0df7b334d15078e980be8f26f35f1bd6f004eaa4a121db42fed361360c1817/68747470733a2f2f6d656469612e67697068792e636f6d2f6d656469612f4c6e516a7057614f4e386e68723231764e572f67697068792e676966" alt="img" width="60"  height="40"/>
+## Team<img src="D:\Chat-Application\assets\68747470733a2f2f6d656469612e67697068792e636f6d2f6d656469612f4c6e516a7057614f4e386e68723231764e572f67697068792e676966.gif" alt="img" width="60"  height="40"/>
 
 This project was created with all the love and passion from the following talented people :heart:
 
@@ -89,7 +93,11 @@ This project was created with all the love and passion from the following talent
     </tr>
 </table>
 
+<<<<<<< HEAD
+=======
 
+
+>>>>>>> 707fa8314f1a409254554af77144e5a1f83c7768
 
 
 ## License :bookmark:
