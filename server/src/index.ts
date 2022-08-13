@@ -53,9 +53,9 @@ const StartServer = () => {
     /** Routes */
     app.use('/api/auth', userRoutes);
     app.use('/api/messages', messageRoute);
-    app.get('/google/redirect' , googleOuth)
-    app.use('/auth', googleOuth);
-    app.use('/profile', googleOuth);
+    // app.get('/google/redirect' , googleOuth)
+    // app.use('/auth', googleOuth);
+    // app.use('/profile', googleOuth);
 
     /** Error handling */
     app.use(ErrorHandler);
