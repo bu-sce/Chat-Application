@@ -77,10 +77,8 @@ If You don't wanna try it locally, don't worry, We got you covered.
 
 This application is now up and running on <<<>>>>, Go give it a check.
 
-## Team<img src="D:\Chat-Application\assets\68747470733a2f2f6d656469612e67697068792e636f6d2f6d656469612f4c6e516a7057614f4e386e68723231764e572f67697068792e676966.gif" alt="img" width="60"  height="40"/>
-
+## Team<img src="https://camo.githubusercontent.com/ec0df7b334d15078e980be8f26f35f1bd6f004eaa4a121db42fed361360c1817/68747470733a2f2f6d656469612e67697068792e636f6d2f6d656469612f4c6e516a7057614f4e386e68723231764e572f67697068792e676966" alt="img" width="60"  height="40"/>
 This project was created with all the love and passion from the following talented people :heart:
-
 <table>
   <tr>
     <td align="center"><a href="https://github.com/ammaradel17"><img src="https://avatars.githubusercontent.com/u/47745294?v=4" width="100px;" alt=""/><br /><sub><b>Ammar Adel</b></sub></a><br /></td>
@@ -92,13 +90,6 @@ This project was created with all the love and passion from the following talent
     <td align="center"><a href="https://github.com/BU9D4DDY"><img src="https://scontent.fcai19-6.fna.fbcdn.net/v/t39.30808-6/241967366_374834414103110_2929536388284615253_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=174925&_nc_ohc=JJxpqPtQvlEAX_6MVjF&_nc_ht=scontent.fcai19-6.fna&oh=00_AT-8zzkhLipWaKpBRTjB7Ndy7tsicrH50z_pHNUb4sQ3Dw&oe=62FB9A8A" width="100px;" alt=""/><br /><sub><b>Diaa Hassan</b></sub></a><br /></td>
     </tr>
 </table>
-
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 707fa8314f1a409254554af77144e5a1f83c7768
-
 
 ## License :bookmark:
 
