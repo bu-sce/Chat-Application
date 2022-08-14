@@ -21,10 +21,14 @@
 
 ## Key Features
 
-- Free real-time Messaging app with Unlimited Chats.
-- Chat with whoever on the app
-- Every user can set an avatar on signup and can change it later at any time
-- 
+- Free real-time Messaging
+- Unlimited Chats
+- Ability to send emojis
+- Chat with whomever on the app
+- Choose your own avatar
+- Reset Your password and avatar
+- Delete your account
+- Other awesome features
 
 ## Technologies Used
 
