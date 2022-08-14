@@ -166,11 +166,12 @@ const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
+    gap: 1rem;
     .avatar {
       position: relative;
+      padding-top: 10px;
       img {
-        height: 3rem;
+        height: 4rem;
         max-inline-size: 100%;
         display: block;
       }
@@ -181,8 +182,8 @@ const Container = styled.div`
       svg {
         position: absolute;
         left: 0;
-        top: 0;
-        background-color: #20272e;
+        top: 10px;
+        background-color: transparent;
         color: #fff;
         font-size: 1.2rem;
         cursor: pointer;

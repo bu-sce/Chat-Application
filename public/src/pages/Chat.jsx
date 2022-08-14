@@ -54,7 +54,10 @@ export default function Chat() {
   return (
     <>
       <Container>
-        <div className={`container ${currentChat === undefined ? '' : 'chat'}`}>
+        <div
+          className="container"
+          // ${currentChat === undefined ? '' : 'chat'}`}
+        >
           <Contacts contacts={contacts} changeChat={handleChatChange} />
           {currentChat === undefined ? (
             <Welcome />
@@ -88,6 +91,6 @@ const Container = styled.div`
     grid-template-columns: 30% 70%;
   }
   .chat {
-    background-color: #f5ffffaa;
+    background-color: #f5ffffaf;
   }
 `

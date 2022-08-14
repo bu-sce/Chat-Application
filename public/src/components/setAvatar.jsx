@@ -44,7 +44,6 @@ export default function SetAvatar() {
       if (data.isSet) {
         user.isAvatarImageSet = true
         user.avatarImage = data.image
-        console.log(user.avatarImage)
         localStorage.setItem(
           process.env.REACT_APP_LOCALHOST_KEY,
           JSON.stringify(user),
@@ -59,7 +58,7 @@ export default function SetAvatar() {
   useEffect(() => {
     const c = async () => {
       const data = []
-      for (let i = 0; i < 4; i++) {
+      for (let i = 0; i < 6; i++) {
         const image = await axios.get(
           `${api}/${Math.round(Math.random() * 1000)}`,
         )
@@ -71,6 +70,7 @@ export default function SetAvatar() {
     }
     c()
   }, [])
+
   return (
     <>
       {isLoading ? (
@@ -125,39 +125,61 @@ const Container = styled.div`
   .title-container {
     h1 {
       color: #20272e;
+      font-family: 'Pacifico', cursive;
+      // text-shadow: 1px 1px #29abff;
+      letter-spacing: 0.5rem;
     }
   }
   .avatars {
     display: flex;
-    gap: 1rem;
-    box-shadow: 2px 2px 2px 1px #20272e;
+    gap: 1.5rem;
+    // box-shadow: 0px 0px 18px 5px #20272e;
     height: 20%;
-    border-radius: 2rem;
-    padding: 0.4rem;
+    padding: auto;
+    align-items: center;
+    border-radius: 7px;
+    padding: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    // transition: 0.5s ease-in-out;
+    background-color: #fff;
+    // overflow: hidden;
+    border-radius: 5rem;
     .avatar {
       cursor: pointer;
       border: 0.4rem solid transparent;
-      padding: 0.4rem;
       border-radius: 5rem;
       display: flex;
       justify-content: center;
       align-items: center;
-      transition: 0.5s ease-in-out;
+      transition: 0.6s ease-out-in;
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 50%;
       img {
         height: 6rem;
-        transition: 0.5s ease-in-out;
+        transition: 0.6s ease-out-in;
       }
       img:hover {
-        border: 0.4rem solid #29abff;
-        border-radius: 5rem;
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 50%;
+        transition: 0.6s ease-out-in;
       }
     }
     .selected {
-      border: 0.3rem solid #29abff;
-      border-radius: 10rem;
-      padding: 1rem;
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 50%;
+      box-shadow: 0px 0px 18px 8px #29abff;
+      margin: 2rem;
+      transition: 0.6s ease-out-in;
     }
   }
+
   .submit-btn {
     background-color: #20272e;
     color: white;
@@ -165,7 +187,7 @@ const Container = styled.div`
     border: none;
     font-weight: bold;
     cursor: pointer;
-    border-radius: 5rem;
+    border-radius: 7px;
     font-size: 1.1rem;
     text-transform: uppercase;
     &:hover {
