@@ -154,64 +154,69 @@ function App() {
       >
         Meet our team!
       </center>
-      {/*<div class="main">
-        <div class="profile-card">
-          <div class="img">
-            <img src={Bahaa} alt="logo" />
+      {
+        <div class="main">
+          <div class="profile-card">
+            <div class="img">
+              <img src={Bahaa} alt="logo" />
+            </div>
+            <div class="caption">
+              <h3>Ahmed Bahaa</h3>
+              <p>Front-End team</p>
+            </div>
           </div>
-          <div class="caption">
-            <h3>Ahmed Bahaa</h3>
-            <p>Front-End team</p>
-          </div>
-        </div>
 
-        <div class="profile-card">
-          <div class="img">
-            <img src={Ammar} alt="logo" />
+          <div class="profile-card">
+            <div class="img">
+              <img src={Ammar} alt="logo" />
+            </div>
+            <div class="caption">
+              <h3>Ammar Adel</h3>
+              <p>Front-End team</p>
+            </div>
           </div>
-          <div class="caption">
-            <h3>Ammar Adel</h3>
-            <p>Front-End team</p>
-          </div>
-        </div>
 
-        <div class="profile-card">
-          <div class="img">
-            <img src={Shrouk} alt="logo" />
+          <div class="profile-card">
+            <div class="img">
+              <img src={Shrouk} alt="logo" />
+            </div>
+            <div class="caption">
+              <h3>Shrouk Abdallah</h3>
+              <p>Front-End team</p>
+            </div>
           </div>
-          <div class="caption">
-            <h3>Shrouk Abdallah</h3>
-            <p>Front-End team</p>
+          <div class="profile-card">
+            <div class="img">
+              <img src={Diaa} alt="logo" />
+            </div>
+            <div class="caption">
+              <h3>Diaa Hassan</h3>
+              <p>Back-End team</p>
+            </div>
+          </div>
+          <div class="profile-card">
+            <div class="img">
+              <img src={Karim} alt="logo" />
+            </div>
+            <div class="caption">
+              <h3>Karim Mohtah</h3>
+              <p>Back-End team</p>
+            </div>
+          </div>
+          <div class="profile-card">
+            <div class="img">
+              <img src={Abdo} alt="logo" />
+            </div>
+            <div class="caption">
+              <h3>Abdelrahman Sayed</h3>
+              <p>Back-End team</p>
+            </div>
           </div>
         </div>
-        <div class="profile-card">
-          <div class="img">
-            <img src={Diaa} alt="logo" />
-          </div>
-          <div class="caption">
-            <h3>Diaa Hassan</h3>
-            <p>Back-End team</p>
-          </div>
-        </div>
-        <div class="profile-card">
-          <div class="img">
-            <img src={Karim} alt="logo" />
-          </div>
-          <div class="caption">
-            <h3>Karim Mohtah</h3>
-            <p>Back-End team</p>
-          </div>
-        </div>
-        <div class="profile-card">
-          <div class="img">
-            <img src={Abdo} alt="logo" />
-          </div>
-          <div class="caption">
-            <h3>Abdelrahman Sayed</h3>
-            <p>Back-End team</p>
-          </div>
-        </div>
-      </div>*/}
+      }
+      <footer class="copyRight">
+        <p>© 2022 Team-1</p>
+      </footer>
     </div>
   );
 }
