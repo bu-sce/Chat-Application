@@ -2,8 +2,6 @@
   <img src="./_assets/Capture-removebg-preview.png"  width="350">
 </h1>
 
-
-
 <h5 align="center">A minimal chat application that can be used as an internal asset for any organization that wants its employees to be connected internally.</h5>
 
 <h6>
@@ -17,26 +15,22 @@
 	</p>
 </h6>
 
-
-
 ## Key Features
 
-- Free real-time Messaging
-- Unlimited Chats
-- Ability to send emojis
-- Chat with whomever on the app
-- Choose your own avatar
-- Reset Your password and avatar
-- Delete your account
-- Other awesome features
+- Free real-time Messaging.
+- Unlimited Chats.
+- Ability to send emojis.
+- Chat with whomever on the app.
+- Choose your own avatar.
+- Reset Your password and avatar.
+- Delete your account.
+- Other awesome features.
 
 ## Technologies Used
 
 <p align="center">
     <img src="https://skillicons.dev/icons?i=html,css,js,ts,react,nodejs,express,mongodb,vscode,git,github,heroku" />
 </p>
-
-
 
 ## How To Use :pencil:
 
@@ -73,7 +67,9 @@ If You don't wanna try it locally, don't worry, We got you covered.
 This application is now up and running on <<<>>>>, Go give it a check.
 
 ## Team<img src="https://camo.githubusercontent.com/ec0df7b334d15078e980be8f26f35f1bd6f004eaa4a121db42fed361360c1817/68747470733a2f2f6d656469612e67697068792e636f6d2f6d656469612f4c6e516a7057614f4e386e68723231764e572f67697068792e676966" alt="img" width="60"  height="40"/>
+
 This project was created with all the love and passion from the following talented people :heart:
+
 <table>
   <tr>
     <td align="center"><a href="https://github.com/ammaradel17"><img src="https://avatars.githubusercontent.com/u/47745294?v=4" width="100px;" alt=""/><br /><sub><b>Ammar Adel</b></sub></a><br /></td>
