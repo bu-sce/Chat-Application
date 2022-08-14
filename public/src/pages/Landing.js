@@ -127,9 +127,12 @@ function App() {
         <div class="container">
           <ul>
             <li>Free real-time Messaging </li>
-            <li>Unlimited Chats</li>
+            <li>Unlimited Chats </li>
+            <li>Ability to send emojis</li>
             <li>Chat with whomever on the app</li>
             <li>Choose your own avatar</li>
+            <li>Reset Your password and avatar</li>
+            <li>Delete your account</li>
             <li>Other awesome features</li>
           </ul>
         </div>

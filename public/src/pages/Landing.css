@@ -388,7 +388,7 @@ nav li a:hover {
     position: absolute;
     width: 10%;
     height: 20em;
-    background: var(--primary-color);
+    background: #29abff;
     left: 0;
     top: -4em;
   }
