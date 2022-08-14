@@ -3,10 +3,10 @@ import axios from 'axios'
 import styled from 'styled-components'
 import { useNavigate, Link } from 'react-router-dom'
 import bg from '../assets/bg.jpg'
-import { FcGoogle} from 'react-icons/fc'
+import { FcGoogle } from 'react-icons/fc'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import { loginRoute,loginWithGoogle } from '../utils/APIRoutes'
+import { loginRoute, loginWithGoogle } from '../utils/APIRoutes'
 
 export default function Login() {
   const navigate = useNavigate()
@@ -62,8 +62,8 @@ export default function Login() {
       }
     }
   }
-  const handleGoogle = async(e)=>{
-    e.preventDefault();
+  const handleGoogle = async (e) => {
+    e.preventDefault()
     const { googleData } = await axios.get(loginWithGoogle)
     console.log(googleData)
     if (googleData.status === true) {
@@ -79,13 +79,16 @@ export default function Login() {
     <>
       <FormContainer>
         <form action="" onSubmit={(event) => handleSubmit(event)}>
-          <h1><span>Tele-</span>Chat !</h1>
-          <span className="greeting">Great To See You!</span>
-          
+          <h1>
+            <span>Tele-</span>Chat !
+          </h1>
+          <span className="greeting">
+            Great To See <span>You!</span>
+          </span>
+
           <input
             type="text"
             placeholder="Username"
-            
             name="username"
             onChange={(e) => handleChange(e)}
             min="3"
@@ -94,16 +97,24 @@ export default function Login() {
             type="password"
             placeholder="Password"
             name="password"
-           
             onChange={(e) => handleChange(e)}
           />
-          <button className='log' type="submit">Log In</button>
-          
-          <span className='register'>
+          <button className="log" type="submit">
+            Log In
+          </button>
+
+          <span className="register">
             Don't have an account ? <Link to="/register">Create One.</Link>
           </span>
-          <h2><span>or</span></h2>
-          <button className="google" onClick={handleGoogle}><span className='icon'><FcGoogle /></span><span className='text'>Log In With Google</span></button>
+          <h2>
+            <span>or</span>
+          </h2>
+          <button className="google" onClick={handleGoogle}>
+            <span className="icon">
+              <FcGoogle />
+            </span>
+            <span className="text">Log In With Google</span>
+          </button>
         </form>
       </FormContainer>
       <ToastContainer />
@@ -118,17 +129,18 @@ const FormContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   gap: 1rem;
-  background-image: url("${bg}");
-  background-size: 3500px;
+  // background-image: url("${bg}");
+  // background-size: 3500px;
   align-items: center;
   background-color: #eee;
   h1 {
-    color: #0458f3;
+    color: #29abff;
     text-align:center;
     font-family: 'Pacifico', cursive;
-    margin-bottom:0px;
+    margin:0px;
     font-weight:bold;
     letter-spacing: 0.15rem;
+    
     span{
       color:#20272e ;
       font-weight:normal;
@@ -136,22 +148,25 @@ const FormContainer = styled.div`
     }
   }
   .greeting{
-    font-family: Poppins,sans-serif;
-    color:#20272e;
+    padding-bottom: 20px;
+    font-family: 'Pacifico', cursive;    
+    color:#29abff;
     font-wight:300;
     font-size:24px;
     text-transform:none;
     text-align:center;
+    
+    span{
+      color : #20272e;
+      font-family: "Pacifico", cursive;
+    }
+
   }
   .brand {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0rem;
     justify-content: center;
-    img {
-      height: 5rem;
-    }
-    
     span{
       color : #20272e;
       font-family: "Pacifico", cursive;
@@ -161,12 +176,12 @@ const FormContainer = styled.div`
   form {
     display: flex;
     flex-direction: column;
-    gap: 1.7rem;
-    padding: 0 80px 40px 40px;
+    gap: 1.1rem;
     background-color: #fff;
-    border-radius: 2rem;
-    padding: 5rem;
-    padding-top:20px;
+    border-radius: 1.5rem;
+    padding: 2rem 4rem;
+
+    box-shadow: 7px 7px 19px -5px #29abff;
   }
   input {
     padding-top:1.5rem;
@@ -176,14 +191,17 @@ const FormContainer = styled.div`
     border-bottom: 1px solid #ced4da;
     color: #20272e;
     background-color:#fff;
-    padding-left:10px;
+     padding-left:10px;
+    border-radius:7px;
     padding-bottom:10px;
-    width: 100%;
+    padding-top:15px;
     font-size: 1.2rem;
     transition: border-color .20s ease-in-out,box-shadow .15s ease-in-out;
     &:focus {
-      border-bottom: 0.1rem solid #20272e;
+      border:0;
+      border: 0.1rem solid #29abff;
       outline: none;
+      box-shadow: 0px 0px 6px -2px #29abff;
     }
     ::selection{
       background-color:#20272e;
@@ -210,8 +228,8 @@ const FormContainer = styled.div`
     padding-top: 10px;
   }
   .log {
-    background-color: #0458f3;
-    color: #f5f5f5;
+    background-color: #20272e;
+    color: white;
     padding: 1rem 2rem;
     border: none;
     font-weight: bold;
@@ -221,7 +239,7 @@ const FormContainer = styled.div`
     transition: background-color .35s ease-in-out,box-shadow .15s ease-in-out;
     text-transform: uppercase;
     &:hover {
-      background-color: #20272e;
+      background-color: #29abff;
       color:#fff;
     }
   }
@@ -232,7 +250,7 @@ const FormContainer = styled.div`
     font-weight: bold;
     font-size: 1rem;
     color: #fff;
-    background-color: #0458f3;
+    background-color: #29abff;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -249,8 +267,10 @@ const FormContainer = styled.div`
       background-color: #fff;
       margin:2px;
       svg{
-      font-size: 18px;
+      font-size: 20px;
       color:#fff;
+      padding-left:7px;
+      padding-right:7px;
       }
     }
     .text{
@@ -261,6 +281,8 @@ const FormContainer = styled.div`
       flex: 12;
       padding: 10px;
       line-height: 26px;
+      color: #fff;
+      font-size:20px;
     }
     
   }
@@ -293,6 +315,7 @@ const FormContainer = styled.div`
  }
   .register {
     margin-top:10px;
+    
     color: #20272e;
     text-transform: uppercase;
     a {
@@ -301,7 +324,7 @@ const FormContainer = styled.div`
       font-weight: bold;
     }
     a:hover{
-      color:#0458f3;
+      color:#29abff;
     }
   }
   
