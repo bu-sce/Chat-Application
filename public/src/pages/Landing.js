@@ -1,22 +1,29 @@
-import './Landing.css'
-import { Link } from 'react-router-dom'
-import Bahaa from '../assets/bahaa.png'
-import Ammar from '../assets/ammar.png'
-import Shrouk from '../assets/Shrouk.png'
-import Diaa from '../assets/diaa.png'
-import Karim from '../assets/karim.png'
-import Abdo from '../assets/abdo.png'
+import "./Landing.css";
+import { Link } from "react-router-dom";
+import Bahaa from "../assets/bahaa.png";
+import Ammar from "../assets/ammar.png";
+import Shrouk from "../assets/Shrouk.png";
+import Diaa from "../assets/diaa.png";
+import { useState } from "react";
 
-import close from './Img/close.svg'
+import Karim from "../assets/karim.png";
+import Abdo from "../assets/abdo.png";
+
+import close from "./Img/x.svg";
 
 //import holdingPhone from "./Img/holding-phone.jpg";
-import illustration from './Img/chat.gif'
+import illustration from "./Img/chat.gif";
 
-import menu from './Img/menu.svg'
+import menu from "./Img/menu.svg";
 
-import video from './Img/video.svg'
+import video from "./Img/video.svg";
 
 function App() {
+  const [IsCollapsed, setIsCollapsed] = useState(true);
+  const HandleClick = () => {
+    setIsCollapsed(!IsCollapsed);
+  };
+
   return (
     <div className="App">
       {/* <!--NAVIGATION BLOG START--> */}
@@ -25,19 +32,25 @@ function App() {
           <a class="logo-nav" id="brand-font" href="">
             Tele-<span>Chat</span>
           </a>
-          <img
-            id="mobile-cta"
-            class="mobile-menu"
-            src={menu}
-            alt="navigation"
-          />
-          <nav>
+          {IsCollapsed && (
             <img
-              id="mobile-exit"
-              class="mobile-menu-exit"
-              src={close}
-              alt="close navigation"
+              id="mobile-cta"
+              class="mobile-menu"
+              src={menu}
+              alt="navigation"
+              onClick={HandleClick}
             />
+          )}
+          {!IsCollapsed && (
+            <img
+              id="close-icon"
+              class="mobile-menu"
+              src={close}
+              alt="navigation"
+              onClick={HandleClick}
+            />
+          )}
+          <nav>
             <ul class="primary-nav">
               <li>
                 <Link to="/login">Login</Link>
@@ -59,6 +72,31 @@ function App() {
         </div>
       </div>
       {/* <!--NAVIGATION BLOG END--> */}
+      {!IsCollapsed && (
+        <ul id="ham-menu">
+          <li class="ham-item">
+            <Link to="/login" class="item-link" onClick={HandleClick}>
+              Login
+            </Link>
+          </li>
+
+          <li class="ham-item">
+            <Link to="/register" class="item-link" onClick={HandleClick}>
+              Register
+            </Link>
+          </li>
+          <li class="ham-item">
+            <a href="#features" class="item-link" onClick={HandleClick}>
+              Features
+            </a>
+          </li>
+          <li class="ham-item">
+            <a href="#team-members" class="item-link" onClick={HandleClick}>
+              Team
+            </a>
+          </li>
+        </ul>
+      )}
 
       {/* <!--SECTION HERO BLOG START--> */}
       <section class="hero">
@@ -103,17 +141,17 @@ function App() {
       <center
         id="team-members"
         style={{
-          backgroundColor: '#29abff',
-          color: '#FFFFFF',
-          fontSize: '80px',
-          padding: '30px',
-          fontWeight: 'bold',
-          fontFamily: 'Pacifico',
+          backgroundColor: "#29abff",
+          color: "#FFFFFF",
+          fontSize: "80px",
+          padding: "30px",
+          fontWeight: "bold",
+          fontFamily: "Pacifico",
         }}
       >
         Meet our team!
       </center>
-      <div class="main">
+      {/*<div class="main">
         <div class="profile-card">
           <div class="img">
             <img src={Bahaa} alt="logo" />
@@ -170,9 +208,9 @@ function App() {
             <p>Back-End team</p>
           </div>
         </div>
-      </div>
+      </div>*/}
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
