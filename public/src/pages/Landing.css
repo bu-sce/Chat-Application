@@ -146,12 +146,14 @@ section {
 
 .ham-item {
   background-color: #29abff;
+  width: 25%;
 
   border-radius: 5em;
   font-size: 1.4em;
   padding: 0.6em 1.3em;
   font-weight: bold;
   margin: 5px;
+  text-align: center;
 }
 
 .ham-item .item-link {
