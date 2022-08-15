@@ -302,6 +302,7 @@ const FormContainer = styled.div`
     opacity: 0;
   }
   .google {
+    width: 100%;
     border: none;
     transition: background-color 0.35s ease-in-out, box-shadow 0.15s ease-in-out;
     padding: 0;

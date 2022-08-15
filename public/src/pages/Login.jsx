@@ -170,6 +170,17 @@ const FormContainer = styled.div`
       
     }
   }
+  .parent {
+    position: relative;
+    padding: 0;
+    margin: 0;
+  }
+  .child1 {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    opacity: 0;
+  }
   .greeting{
     padding-bottom: 20px;
     font-family: 'Pacifico', cursive;    
@@ -267,6 +278,7 @@ const FormContainer = styled.div`
     }
   }
   .google{
+    width: 100%;
     border: none;
     transition: background-color .35s ease-in-out,box-shadow .15s ease-in-out;
     padding: 0;
@@ -357,14 +369,5 @@ const FormContainer = styled.div`
       color:#29abff;
     }
   }
-  .parent {
-    position: relative;
-    padding: 0;
-    margin: 0;
-  }
-  .child1 {
-    position: absolute;
-    top: 0;
-    opacity: 0;
-  }
+
 `
