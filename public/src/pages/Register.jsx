@@ -218,7 +218,7 @@ const FormContainer = styled.div`
     gap: 1.1rem;
     background-color: #fff;
     border-radius: 1.5rem;
-    padding: 2rem 4rem;
+    padding: 1.8rem 4.2rem;
     box-shadow: 7px 7px 19px -5px #29abff;
   }
   input {
@@ -272,8 +272,8 @@ const FormContainer = styled.div`
     font-weight: bold;
     cursor: pointer;
     border-radius: 7px;
-    font-size: 1rem;
-    text-transform: uppercase;
+    font-size: 20px;
+    text-transform: capitalize;
     &:hover {
       background-color: #29abff;
       color: #fff;
@@ -341,7 +341,9 @@ const FormContainer = styled.div`
       padding: 10px;
       line-height: 26px;
       color: #fff;
-      font-size: 18px;
+      font-size:20px;
+      text-transform: capitalize;
+
     }
   }
   .google:hover {
