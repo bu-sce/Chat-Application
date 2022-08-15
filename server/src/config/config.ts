@@ -18,5 +18,3 @@ const SERVER_PORT = process.env.SERVER_PORT ? Number(process.env.SERVER_PORT) : 
         port: SERVER_PORT
     }
 };
-
-//module.exports = config;

@@ -1,4 +1,4 @@
-module.exports = {
+const keys = {
     google: {
 
         clientID: '1032024041182-0fbq9fq0avndmmv3qj2emo3p0emt639j.apps.googleusercontent.com',
@@ -6,6 +6,7 @@ module.exports = {
     },
     session : {
         cookieKey : 'thissecretkeywillusedtoencyptuseridincookieyadiaa'
-    }
-    
+    } 
 };
+
+export default keys;
