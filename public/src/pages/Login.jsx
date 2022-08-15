@@ -1,125 +1,148 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
-import styled from 'styled-components'
-import { useNavigate, Link } from 'react-router-dom'
-import bg from '../assets/bg.jpg'
-import { FcGoogle } from 'react-icons/fc'
-import { ToastContainer, toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
-import { loginRoute, loginWithGoogle } from '../utils/APIRoutes'
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import styled from "styled-components";
+import { useNavigate, Link } from "react-router-dom";
+import bg from "../assets/bg.jpg";
+import { FcGoogle } from "react-icons/fc";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { loginRoute, loginWithGoogle } from "../utils/APIRoutes";
+
+import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
+import jwt_decode from "jwt-decode";
 
 export default function Login() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   // in login we only need the username and password
-  const [values, setValues] = useState({ username: '', password: '' })
+  const [values, setValues] = useState({ username: "", password: "" });
   const toastOptions = {
-    position: 'bottom-right',
+    position: "bottom-right",
     autoClose: 5000,
     pauseOnHover: true,
     draggable: true,
-    theme: 'light',
-  }
+    theme: "light",
+  };
   useEffect(() => {
     if (localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)) {
       // navigate("/");
     }
-  }, [])
+  }, []);
 
   const handleChange = (event) => {
-    setValues({ ...values, [event.target.name]: event.target.value })
-  }
+    setValues({ ...values, [event.target.name]: event.target.value });
+  };
 
   const validateForm = () => {
-    const { username, password } = values
-    if (username === '') {
-      toast.error('Email and Password is required.', toastOptions)
-      return false
-    } else if (password === '') {
-      toast.error('Email and Password is required.', toastOptions)
-      return false
+    const { username, password } = values;
+    if (username === "") {
+      toast.error("Email and Password is required.", toastOptions);
+      return false;
+    } else if (password === "") {
+      toast.error("Email and Password is required.", toastOptions);
+      return false;
     }
-    return true
-  }
+    return true;
+  };
+
+  let googleSignIn = false;
+  let googleData;
+  const googleSign = (res) => {
+    googleSignIn = true;
+    const data = JSON.stringify(res);
+    const dataparsed = JSON.parse(data);
+
+    googleData = jwt_decode(dataparsed.credential);
+    handleSubmit();
+  };
+
+  const onFailure = (res) => {
+    console.log("res: ", res);
+  };
 
   const handleSubmit = async (event) => {
-    event.preventDefault()
-    if (validateForm()) {
-      const { username, password } = values
-      const { data } = await axios.post(loginRoute, {
-        username,
-        password,
-      })
-      if (data.status === false) {
-        toast.error(data.msg, toastOptions)
-      }
-      if (data.status === true) {
-        localStorage.setItem(
-          process.env.REACT_APP_LOCALHOST_KEY,
-          JSON.stringify(data.user),
-        )
+    var serverData;
 
-        navigate('/chat')
+    if (googleSignIn) {
+      const { sub } = googleData;
+      serverData = await axios.post(loginWithGoogle, { sub });
+    } else {
+      event.preventDefault();
+      if (validateForm()) {
+        const { username, password } = values;
+        serverData = await axios.post(loginRoute, {
+          username,
+          password,
+        });
       }
     }
-  }
-  const handleGoogle = async (e) => {
-    e.preventDefault()
-    const { googleData } = await axios.get(loginWithGoogle)
-    console.log(googleData)
-    if (googleData.status === true) {
+
+    if (serverData.data.status === false) {
+      toast.error(serverData.data.msg, toastOptions);
+    }
+    if (serverData.data.status === true) {
       localStorage.setItem(
         process.env.REACT_APP_LOCALHOST_KEY,
-        JSON.stringify(googleData.user),
-      )
+        JSON.stringify(serverData.data.user)
+      );
 
-      navigate('/chat')
+      navigate("/chat");
     }
-  }
+  };
+
   return (
     <>
-      <FormContainer>
-        <form action="" onSubmit={(event) => handleSubmit(event)}>
-          <h1>
-            <span>Tele-</span>Chat !
-          </h1>
-          <span className="greeting">
-            Great To See <span>You!</span>
-          </span>
-
-          <input
-            type="text"
-            placeholder="Username"
-            name="username"
-            onChange={(e) => handleChange(e)}
-            min="3"
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            name="password"
-            onChange={(e) => handleChange(e)}
-          />
-          <button className="log" type="submit">
-            Log In
-          </button>
-
-          <span className="register">
-            Don't have an account ? <Link to="/register">Create One.</Link>
-          </span>
-          <h2>
-            <span>or</span>
-          </h2>
-          <button className="google" onClick={handleGoogle}>
-            <span className="icon">
-              <FcGoogle />
+      <GoogleOAuthProvider clientId="879311120849-rg88lrpvhqd7dh0uvegubm3116u6tu32.apps.googleusercontent.com">
+        <FormContainer>
+          <form action="" onSubmit={(event) => handleSubmit(event)}>
+            <h1>
+              <span>Tele-</span>Chat !
+            </h1>
+            <span className="greeting">
+              Great To See <span>You!</span>
             </span>
-            <span className="text">Log In With Google</span>
-          </button>
-        </form>
-      </FormContainer>
+
+            <input
+              type="text"
+              placeholder="Username"
+              name="username"
+              onChange={(e) => handleChange(e)}
+              min="3"
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              name="password"
+              onChange={(e) => handleChange(e)}
+            />
+            <button className="log" type="submit">
+              Log In
+            </button>
+
+            <span className="register">
+              Don't have an account ? <Link to="/register">Create One.</Link>
+            </span>
+            <h2>
+              <span>or</span>
+            </h2>
+            <div className="parent">
+              <button className="google">
+                <span className="icon">
+                  <FcGoogle />
+                </span>
+                <span className="text">Sign Up With Google</span>
+              </button>
+
+              <div className="child1">
+                <GoogleLogin onSuccess={googleSign} onError={onFailure} />;
+              </div>
+            </div>
+          </form>
+        </FormContainer>
+      </GoogleOAuthProvider>
+      ;
       <ToastContainer />
     </>
-  )
+  );
 }
 
 const FormContainer = styled.div`
@@ -135,40 +158,38 @@ const FormContainer = styled.div`
   background-color: #eee;
   h1 {
     color: #29abff;
-    text-align:center;
-    font-family: 'Pacifico', cursive;
-    margin:0px;
-    font-weight:bold;
+    text-align: center;
+    font-family: "Pacifico", cursive;
+    margin: 0px;
+    font-weight: bold;
     letter-spacing: 0.15rem;
-    
-    span{
-      color:#20272e ;
-      font-weight:normal;
-      
+
+    span {
+      color: #20272e;
+      font-weight: normal;
     }
   }
-  .greeting{
+  .greeting {
     padding-bottom: 20px;
-    font-family: 'Pacifico', cursive;    
-    color:#29abff;
-    font-wight:300;
-    font-size:24px;
-    text-transform:none;
-    text-align:center;
-    
-    span{
-      color : #20272e;
+    font-family: "Pacifico", cursive;
+    color: #29abff;
+    font-wight: 300;
+    font-size: 24px;
+    text-transform: none;
+    text-align: center;
+
+    span {
+      color: #20272e;
       font-family: "Pacifico", cursive;
     }
-
   }
   .brand {
     display: flex;
     align-items: center;
     gap: 0rem;
     justify-content: center;
-    span{
-      color : #20272e;
+    span {
+      color: #20272e;
       font-family: "Pacifico", cursive;
     }
   }
@@ -184,47 +205,46 @@ const FormContainer = styled.div`
     box-shadow: 7px 7px 19px -5px #29abff;
   }
   input {
-    padding-top:1.5rem;
+    padding-top: 1.5rem;
     border-right: none;
     border-top: none;
     border-left: none;
     border-bottom: 1px solid #ced4da;
     color: #20272e;
-    background-color:#fff;
-     padding-left:10px;
-    border-radius:7px;
-    padding-bottom:10px;
-    padding-top:15px;
+    background-color: #fff;
+    padding-left: 10px;
+    border-radius: 7px;
+    padding-bottom: 10px;
+    padding-top: 15px;
     font-size: 1.2rem;
-    transition: border-color .20s ease-in-out,box-shadow .15s ease-in-out;
+    transition: border-color 0.2s ease-in-out, box-shadow 0.15s ease-in-out;
     &:focus {
-      border:0;
+      border: 0;
       border: 0.1rem solid #29abff;
       outline: none;
       box-shadow: 0px 0px 6px -2px #29abff;
     }
-    ::selection{
-      background-color:#20272e;
-      color:#fff;
+    ::selection {
+      background-color: #20272e;
+      color: #fff;
     }
     input:-webkit-autofill {
       border: 3px solid blue;
-      color:#fff;
+      color: #fff;
     }
     input:autofill {
       border: 3px solid blue;
-      color:#fff;
-    } 
-    
+      color: #fff;
+    }
   }
   input:-webkit-autofill,
   input:-webkit-autofill:focus {
-     transition: background-color 600000s 0s, color 600000s 0s;
-    color:#fff;
+    transition: background-color 600000s 0s, color 600000s 0s;
+    color: #fff;
   }
-  
-  input:last-of-type{
-    margin-bottom:1rem;
+
+  input:last-of-type {
+    margin-bottom: 1rem;
     padding-top: 10px;
   }
   .log {
@@ -235,17 +255,27 @@ const FormContainer = styled.div`
     font-weight: bold;
     cursor: pointer;
     font-size: 1rem;
-    border-radius:7px;
-    transition: background-color .35s ease-in-out,box-shadow .15s ease-in-out;
+    border-radius: 7px;
+    transition: background-color 0.35s ease-in-out, box-shadow 0.15s ease-in-out;
     text-transform: uppercase;
     &:hover {
       background-color: #29abff;
-      color:#fff;
+      color: #fff;
     }
   }
-  .google{
+  .parent {
+    position: relative;
+    padding: 0;
+    margin: 0;
+  }
+  .child1 {
+    position: absolute;
+    top: 0;
+    opacity: 0;
+  }
+  .google {
     border: none;
-    transition: background-color .35s ease-in-out,box-shadow .15s ease-in-out;
+    transition: background-color 0.35s ease-in-out, box-shadow 0.15s ease-in-out;
     padding: 0;
     font-weight: bold;
     font-size: 1rem;
@@ -257,23 +287,23 @@ const FormContainer = styled.div`
     display: flex;
     overflow: hidden;
     cursor: pointer;
-    border-radius:7px;
-    .icon{
+    border-radius: 7px;
+    .icon {
       -webkit-flex: 1;
       -ms-flex: 1;
       flex: 1;
-      border-radius:7px;
+      border-radius: 7px;
       padding: 10px;
       background-color: #fff;
-      margin:2px;
-      svg{
-      font-size: 20px;
-      color:#fff;
-      padding-left:7px;
-      padding-right:7px;
+      margin: 2px;
+      svg {
+        font-size: 20px;
+        color: #fff;
+        padding-left: 7px;
+        padding-right: 7px;
       }
     }
-    .text{
+    .text {
       -webkit-flex: 12;
       -ms-flex: 12;
       -webkit-flex: 12;
@@ -282,40 +312,38 @@ const FormContainer = styled.div`
       padding: 10px;
       line-height: 26px;
       color: #fff;
-      font-size:20px;
+      font-size: 20px;
     }
-    
   }
-  .google:hover{
+  .google:hover {
     background-color: #20272e;
-      color:#fff;
-    .icon{
+    color: #fff;
+    .icon {
       background-color: #fff;
-      
-      svg{
-        color:#fff;
-        
+
+      svg {
+        color: #fff;
       }
     }
   }
   h2 {
-    width: 100%; 
-    text-align: center; 
-    border-bottom: 1px solid #ced4da; 
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #ced4da;
     line-height: 0.1em;
-    margin: 10px 0 20px; 
- } 
- 
- h2 span { 
-  font-size: 1.3rem;
-  background: #fff;
-  font-family: 'Fira Sans', sans-serif;
-  letter-spacing: 0.1rem;
-  padding: 0 10px;
- }
+    margin: 10px 0 20px;
+  }
+
+  h2 span {
+    font-size: 1.3rem;
+    background: #fff;
+    font-family: "Fira Sans", sans-serif;
+    letter-spacing: 0.1rem;
+    padding: 0 10px;
+  }
   .register {
-    margin-top:10px;
-    
+    margin-top: 10px;
+
     color: #20272e;
     text-transform: uppercase;
     a {
@@ -323,9 +351,8 @@ const FormContainer = styled.div`
       text-decoration: none;
       font-weight: bold;
     }
-    a:hover{
-      color:#29abff;
+    a:hover {
+      color: #29abff;
     }
   }
-  
-`
+`;

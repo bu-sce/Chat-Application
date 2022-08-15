@@ -31,8 +31,7 @@ const userSchema : Schema= new mongoose.Schema({
     type: String,
     default: "",
   },
-  refreshToken: String,
-  googleId : String,
+  googleID : String,
   resetPasswordToken : String,
   resetPasswordExpire : Date,
 
@@ -64,6 +63,6 @@ userSchema.methods.getResetPasswordToken = function () {
 };
 
 
-const user = mongoose.model("User", userSchema);
+const User = mongoose.model("User", userSchema);
 
-export default user
+export default User

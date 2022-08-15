@@ -12,6 +12,8 @@ router.get("/allusers/:id", controller.readAll);
 router.get("/logout/:id", controller.logOut);
 router.put("/resetpassword/:resetToken", controller.resetPassword);
 router.post("/forgetpassword", controller.forgetPassword);
+router.post("/googleSignUp", controller.googleRegistration);
+router.post("/googleLogIn", controller.googleLogIn);
 // router.get('/', refreshTokenController.handleRefreshToken);
 
 export default router;

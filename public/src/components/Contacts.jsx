@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
-import Logo from '../assets/logo.svg'
 import { TbCameraPlus } from 'react-icons/tb'
 import Logout from './Logout'
 
