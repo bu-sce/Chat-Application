@@ -33,7 +33,7 @@ const Register = () => {
     if (localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)) {
       navigate("/setAvatar");
     }
-  }, []);
+  },);
 
   let googleSignUp = false;
   let googleData;

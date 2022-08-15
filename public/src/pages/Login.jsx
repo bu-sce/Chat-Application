@@ -7,7 +7,6 @@ import { FcGoogle } from 'react-icons/fc'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { loginRoute, loginWithGoogle } from '../utils/APIRoutes'
-import ResetPass from './ResetPass'
 
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 import jwt_decode from "jwt-decode";
