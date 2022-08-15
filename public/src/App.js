@@ -5,6 +5,7 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import SetAvatar from './components/setAvatar'
 import PageNotFound from './pages/PageNotFound'
+import SetEmail from './pages/SetEmail'
 import Landing from "./pages/Landing"
 const App = () => {
   return (
@@ -14,7 +15,7 @@ const App = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/setAvatar" element={<SetAvatar />} />
-        
+        <Route path="/SetEmail" element={<SetEmail />} />
         <Route path="/chat" element={<Chat />} />
         
         <Route path="*" element={<PageNotFound />} />
