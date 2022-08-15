@@ -1,28 +1,28 @@
-import "./Landing.css";
-import { Link } from "react-router-dom";
-import Bahaa from "../assets/bahaa.png";
-import Ammar from "../assets/ammar.png";
-import Shrouk from "../assets/Shrouk.png";
-import Diaa from "../assets/diaa.png";
-import { useState } from "react";
+import './Landing.css'
+import { Link } from 'react-router-dom'
+import Bahaa from '../assets/bahaa.png'
+import Ammar from '../assets/ammar.png'
+import Shrouk from '../assets/Shrouk.png'
+import Diaa from '../assets/diaa.png'
+import { useState } from 'react'
 
-import Karim from "../assets/karim.png";
-import Abdo from "../assets/abdo.png";
+import Karim from '../assets/karim.png'
+import Abdo from '../assets/abdo.png'
 
-import close from "./Img/x.svg";
+import close from './Img/x.svg'
 
 //import holdingPhone from "./Img/holding-phone.jpg";
-import illustration from "./Img/chat.gif";
+import illustration from './Img/chat.gif'
 
-import menu from "./Img/menu.svg";
+import menu from './Img/menu.svg'
 
-import video from "./Img/video.svg";
+import video from './Img/video.svg'
 
 function App() {
-  const [IsCollapsed, setIsCollapsed] = useState(true);
+  const [IsCollapsed, setIsCollapsed] = useState(true)
   const HandleClick = () => {
-    setIsCollapsed(!IsCollapsed);
-  };
+    setIsCollapsed(!IsCollapsed)
+  }
 
   return (
     <div className="App">
@@ -144,12 +144,12 @@ function App() {
       <center
         id="team-members"
         style={{
-          backgroundColor: "#29abff",
-          color: "#FFFFFF",
-          fontSize: "80px",
-          padding: "30px",
-          fontWeight: "bold",
-          fontFamily: "Pacifico",
+          backgroundColor: '#29abff',
+          color: '#FFFFFF',
+          fontSize: '80px',
+          padding: '30px',
+          fontWeight: 'bold',
+          fontFamily: 'Pacifico',
         }}
       >
         Meet our team!
@@ -218,7 +218,7 @@ function App() {
         <p>© 2022 Team-1</p>
       </footer>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
