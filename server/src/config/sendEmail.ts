@@ -1,6 +1,5 @@
 const nodemailer = require("nodemailer");
 import dotenv from 'dotenv';
-import { Err } from 'joi';
 
 dotenv.config();
 const sendEmail = (options : any) => {
