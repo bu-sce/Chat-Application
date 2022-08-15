@@ -36,5 +36,6 @@ const Container = styled.div`
   span {
     font-size: 45px;
     color: #29abff;
+    text-transform: capitalize;
   }
 `
