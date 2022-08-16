@@ -113,11 +113,11 @@ grid-template-rows: 11% 79% 10%;
 gap: 0.1rem;
 overflow: hidden;
 border-radius: 5rem;
-@media screen and (max-width: 959px) {
+/* @media screen and (max-width: 769px) {
   border-radius:0;
-}
+} */
 .chat-header {
-  justify-item: center;
+  justify-items: center;
   display: flex;
   width: auto;
   height: 5%;
@@ -129,6 +129,9 @@ border-radius: 5rem;
   gap: 5rem;
   border-radius: 5rem;
   background-color: white;
+  @media screen and  (max-width: 319px)  {
+      padding: 1.5rem
+    }
   .user-details {
     display: flex;
     align-items: center;

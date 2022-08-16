@@ -65,7 +65,7 @@ export default function Contacts({ contacts, changeChat }) {
               src={`data:image/svg+xml;base64,${currentUserImage}`}
               alt="avatar"
             />
-            <div class="dropup-content">
+            <div className="dropup-content">
               <button onClick={handleChangeAvatar}>
                 <TbCameraPlus />
               </button>
@@ -220,7 +220,7 @@ const Container = styled.div`
       &:hover .dropup-content {
         display: flex;
 
-        justify-contents: space-between;
+        justify-content: space-between;
         align-items: center;
         &:after {
           border-bottom-color: $blue;

@@ -27,15 +27,15 @@ function App() {
   return (
     <div className="App">
       {/* <!--NAVIGATION BLOG START--> */}
-      <div class="nav-bar">
-        <div class="container">
-          <a class="logo-nav" id="brand-font" href="">
+      <div className="nav-bar">
+        <div className="container">
+          <a className="logo-nav" id="brand-font" href="">
             Tele-<span>Chat</span>
           </a>
           {IsCollapsed && (
             <img
               id="mobile-cta"
-              class="mobile-menu"
+              className="mobile-menu"
               src={menu}
               alt="navigation"
               onClick={HandleClick}
@@ -44,14 +44,14 @@ function App() {
           {!IsCollapsed && (
             <img
               id="close-icon"
-              class="mobile-menu"
+              className="mobile-menu"
               src={close}
               alt="navigation"
               onClick={HandleClick}
             />
           )}
           <nav>
-            <ul class="primary-nav">
+            <ul className="primary-nav">
               <li>
                 <Link to="/login">Login</Link>
               </li>
@@ -63,8 +63,8 @@ function App() {
               </li>
             </ul>
 
-            <ul class="second-nav">
-              <li class="go-premium-cta">
+            <ul className="second-nav">
+              <li className="go-premium-cta">
                 <Link to="/register">Register</Link>
               </li>
             </ul>
@@ -74,24 +74,24 @@ function App() {
       {/* <!--NAVIGATION BLOG END--> */}
       {!IsCollapsed && (
         <ul id="ham-menu">
-          <li class="ham-item">
-            <Link to="/login" class="item-link" onClick={HandleClick}>
+          <li className="ham-item">
+            <Link to="/login" className="item-link" onClick={HandleClick}>
               Login
             </Link>
           </li>
 
-          <li class="ham-item">
-            <Link to="/register" class="item-link" onClick={HandleClick}>
+          <li className="ham-item">
+            <Link to="/register" className="item-link" onClick={HandleClick}>
               Register
             </Link>
           </li>
-          <li class="ham-item">
-            <a href="#features" class="item-link" onClick={HandleClick}>
+          <li className="ham-item">
+            <a href="#features" className="item-link" onClick={HandleClick}>
               Features
             </a>
           </li>
-          <li class="ham-item">
-            <a href="#team-members" class="item-link" onClick={HandleClick}>
+          <li className="ham-item">
+            <a href="#team-members" className="item-link" onClick={HandleClick}>
               Team
             </a>
           </li>
@@ -99,32 +99,32 @@ function App() {
       )}
 
       {/* <!--SECTION HERO BLOG START--> */}
-      <section class="hero">
-        <div class="container">
-          <div class="left-col">
-            <p class="sub-head">it's nitty &amp; gritty</p>
+      <section className="hero">
+        <div className="container">
+          <div className="left-col">
+            <p className="sub-head">it's nitty &amp; gritty</p>
             <h1>a Chat app that doesn't stink</h1>
 
-            <div class="hero-cta">
+            <div className="hero-cta">
               <Link to="/register" className="primery-cta">
                 Try for free
               </Link>
 
-              <a href="#" class="watch-video-cta">
+              <a href="#" className="watch-video-cta">
                 <img style={{}} src={video} alt="Video Clip" />
                 Watch a video
               </a>
             </div>
           </div>
 
-          <img src={illustration} alt="Illustration" class="hero-img" />
+          <img src={illustration} alt="Illustration" className="hero-img" />
         </div>
       </section>
       {/* <!--SECTION HERO BLOG END--> */}
 
       {/* <!--SECTION FEATURES BLOG START--> */}
-      <section id="features" class="features-section">
-        <div class="container">
+      <section id="features" className="features-section">
+        <div className="container">
           <ul>
             <li>Free real-time Messaging </li>
             <li>Unlimited Chats </li>
@@ -155,66 +155,66 @@ function App() {
         Meet our team!
       </center>
       {
-        <div class="main">
-          <div class="profile-card">
-            <div class="img">
+        <div className="main">
+          <div className="profile-card">
+            <div className="img">
               <img src={Bahaa} alt="logo" />
             </div>
-            <div class="caption">
+            <div className="caption">
               <h3>Ahmed Bahaa</h3>
               <p>Front-End team</p>
             </div>
           </div>
 
-          <div class="profile-card">
-            <div class="img">
+          <div className="profile-card">
+            <div className="img">
               <img src={Ammar} alt="logo" />
             </div>
-            <div class="caption">
+            <div className="caption">
               <h3>Ammar Adel</h3>
               <p>Front-End team</p>
             </div>
           </div>
 
-          <div class="profile-card">
-            <div class="img">
+          <div className="profile-card">
+            <div className="img">
               <img src={Shrouk} alt="logo" />
             </div>
-            <div class="caption">
+            <div className="caption">
               <h3>Shrouk Abdallah</h3>
               <p>Front-End team</p>
             </div>
           </div>
-          <div class="profile-card">
-            <div class="img">
+          <div className="profile-card">
+            <div className="img">
               <img src={Diaa} alt="logo" />
             </div>
-            <div class="caption">
+            <div className="caption">
               <h3>Diaa Hassan</h3>
               <p>Back-End team</p>
             </div>
           </div>
-          <div class="profile-card">
-            <div class="img">
+          <div className="profile-card">
+            <div className="img">
               <img src={Karim} alt="logo" />
             </div>
-            <div class="caption">
+            <div className="caption">
               <h3>Karim Mohtah</h3>
               <p>Back-End team</p>
             </div>
           </div>
-          <div class="profile-card">
-            <div class="img">
+          <div className="profile-card">
+            <div className="img">
               <img src={Abdo} alt="logo" />
             </div>
-            <div class="caption">
+            <div className="caption">
               <h3>Abdelrahman Sayed</h3>
               <p>Back-End team</p>
             </div>
           </div>
         </div>
       }
-      <footer class="copyRight">
+      <footer className="copyRight">
         <p>© 2022 Team-1</p>
       </footer>
     </div>
