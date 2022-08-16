@@ -9,7 +9,7 @@ import Contacts from '../components/Contacts'
 import Welcome from '../components/Welcome'
 
 import bg from '../assets/bg.jpg'
-import {MdOutlineKeyboardBackspace} from 'react-icons/md'
+import { MdOutlineKeyboardBackspace } from 'react-icons/md'
 export default function Chat() {
   const navigate = useNavigate()
   const socket = useRef()
@@ -17,35 +17,35 @@ export default function Chat() {
   const [currentChat, setCurrentChat] = useState(undefined)
   const [currentUser, setCurrentUser] = useState(undefined)
   const [toggle, setToggle] = useState(true)
-  var f 
-  
+  var f
+
   function getWindowDimensions() {
-    const { innerWidth: width} = window;
+    const { innerWidth: width } = window
     return {
-      width
-    };
+      width,
+    }
   }
-  
-  var u =()=>{
-    f=getWindowDimensions().width
-    if(f<769){
+
+  var u = () => {
+    f = getWindowDimensions().width
+    if (f < 769) {
       return true
-    }else{
+    } else {
       return false
     }
   }
-  const [res,setRes]=useState(u)
-  
-  window.addEventListener('resize', function(){
-    f =getWindowDimensions()
-    if(f.width<769 ){
+  const [res, setRes] = useState(u)
+
+  window.addEventListener('resize', function () {
+    f = getWindowDimensions()
+    if (f.width < 769) {
       setRes(true)
-    }else{
+    } else {
       setRes(false)
     }
-  });
-  
-  const handleToggle=()=>{
+  })
+
+  const handleToggle = () => {
     setToggle(true)
   }
   useEffect(() => {
@@ -88,25 +88,26 @@ export default function Chat() {
   return (
     <>
       <Container>
-        <div
-          className="container"
-        >
-          {res === false ?(
-           <>
-            <Contacts contacts={contacts} changeChat={handleChatChange} />
-            {currentChat === undefined ? (
-              <Welcome />
-            ) : (
-              <ChatContainer  currentChat={currentChat} socket={socket}  />
-            )}</>
-          ):(
+        <div className="container">
+          {res === false ? (
+            <>
+              <Contacts contacts={contacts} changeChat={handleChatChange} />
+              {currentChat === undefined ? (
+                <Welcome />
+              ) : (
+                <ChatContainer currentChat={currentChat} socket={socket} />
+              )}
+            </>
+          ) : (
             <>
               {toggle === true ? (
-                   <Contacts contacts={contacts} changeChat={handleChatChange}  />
-              ):(
+                <Contacts contacts={contacts} changeChat={handleChatChange} />
+              ) : (
                 <>
-                <button className='button' onClick={handleToggle}><MdOutlineKeyboardBackspace /></button>
-                <ChatContainer  currentChat={currentChat} socket={socket}  />
+                  <button className="button" onClick={handleToggle}>
+                    <MdOutlineKeyboardBackspace />
+                  </button>
+                  <ChatContainer currentChat={currentChat} socket={socket} />
                 </>
               )}
             </>
