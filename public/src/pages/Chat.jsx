@@ -172,7 +172,5 @@ background-image: url("${bg}");
       } 
   }
 }
-.chat {
-  background-color: #f5ffffaf;
-}
+
 `

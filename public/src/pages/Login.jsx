@@ -145,6 +145,20 @@ export default function Login() {
 }
 
 const FormContainer = styled.div`
+.S9gUrf-YoZ4jf, .S9gUrf-YoZ4jf * {
+    border: none;
+    margin: 0 !important;
+    width: 100% !important;
+    height:45px !important;
+    padding: 0;
+    top:-43px ;
+}
+/* .child1{
+  height:100%;
+}
+.child1 div{
+  height:100%;
+} */
   height: 100vh;
   width: 100vw;
   display: flex;
