@@ -20,7 +20,7 @@ const readUser = async (req: Request, res: Response, next: NextFunction) => {
 
     const data = { '_id': jsonData._id, 'username': jsonData.username, 'isAvatarImageSet': jsonData.isAvatarImageSet, 'avatarImage': jsonData.avatarImage }
 
-    return res.json({ status: true, user: data }); //, token : 'secretTokenForAuthentication'
+    return res.json({ status: true, user: data }); 
 
   } catch (ex) {
     next(ex);
@@ -40,12 +40,6 @@ const createUser = async (req: Request, res: Response, next: NextFunction) => {
     if (emailcheck) {
       return res.json({ msg: 'Email is already used.', status: false });
     }
-    // const hashedpassword = await bcrypt.hash(password, 10);
-
-    // const user = new User();
-    // user.username = username;
-    // user.email = email;
-    // user.password = hashedpassword;
     const user = await User.create({ username, email, password });
     await user.save();
     delete user.password;
@@ -146,24 +140,7 @@ const logOut = async (req: Request, res: Response, next: NextFunction) => {
   try {
     if (!req.params.id) return res.json({ msg: "User id is required " });
     onlineUsers.delete(req.params.id);
-
-    // Is refreshToken in header?
-    //   const refreshTokenHeader : any = req.headers['authorization'];
-    //   if(!refreshTokenHeader) return res.status(401).send("authorization header is requied");
-
-    // Is refreshToken in DB?
-    //   const authTokenHeader = refreshTokenHeader.split(" ")[1]
-    //   const foundUserToLogout = await User.findOne({ refreshToken:authTokenHeader });
-    //   if (!foundUserToLogout) {
-
-    //      return res.sendStatus(204).send("no user has this refresh token");
-    //   }
-
-    // Delete refreshToken in db
-    //   foundUserToLogout.refreshToken = '';
-    //   await foundUserToLogout.save();
-    //   res.removeHeader('authorization');
-    res.status(200).send();//.redirect("http://localhost:3000/"); 
+    res.status(200).send();
   } catch (ex) {
     next(ex);
   }
@@ -189,7 +166,7 @@ const forgetPassword = async (req: Request, res: Response, next: NextFunction) =
     await user.save();
 
     // Create reset url to email to provided email
-    const resetUrl = `http://localhost:3000/resetpassword/${resetToken}`;
+    const resetUrl = `https://tele-chat.vercel.app/resetpassword/${resetToken}`;
 
     // HTML Message
     const message = `
@@ -249,7 +226,7 @@ const resetPassword = async (req: Request, res: Response, next: NextFunction) =>
 
  
 
-    const resetUrl = `http://localhost:3000/login`;
+    const resetUrl = `https://tele-chat.vercel.app/login`;
 
     // HTML Message
     const message = `
@@ -278,8 +255,7 @@ const resetPassword = async (req: Request, res: Response, next: NextFunction) =>
     res.json({
       status: true,
       msg: "Password Updated Successfully"
-      
-      //token: user.getSignedJwtToken(),
+
     });
   } catch (err) {
     next(err);
