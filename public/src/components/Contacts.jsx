@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
+import Logo from '../assets/logo.svg'
 import { TbCameraPlus } from 'react-icons/tb'
+import Logout from './Logout'
 
 export default function Contacts({ contacts, changeChat }) {
   const [currentUserName, setCurrentUserName] = useState(undefined)
@@ -63,9 +65,12 @@ export default function Contacts({ contacts, changeChat }) {
               src={`data:image/svg+xml;base64,${currentUserImage}`}
               alt="avatar"
             />
-            <button onClick={handleChangeAvatar}>
-              <TbCameraPlus />
-            </button>
+            <div class="dropup-content">
+              <button onClick={handleChangeAvatar}>
+                <TbCameraPlus />
+              </button>
+              <Logout />
+            </div>
           </div>
           <div className="username">
             <h2>{currentUserName}</h2>
@@ -167,25 +172,78 @@ const Container = styled.div`
     align-items: center;
     gap: 1rem;
     .avatar {
-      position: relative;
+      cursor: pointer;
+      display: inline-block;
       padding-top: 10px;
+      position: relative;
+
+      .dropup-content {
+        display: none;
+        position: absolute;
+        background-color: #29abff;
+        // background-color: rgba(0, 0, 0, 0.8);
+        // box-shadow: 2px 2px 2px 1px #29abff;
+        border-radius: 17px;
+        // width: 80%;
+        padding-left: 10px;
+        padding-right: 10px;
+        height: 50%;
+        margin: 8px;
+        bottom: 60px;
+        z-index: 1;
+        &:before {
+          content: '';
+          position: absolute;
+          bottom: 100%;
+          top: 36px;
+          left: 28px;
+          width: 0px;
+          height: 0px;
+          border-left: 20px solid #29abff;
+          border-bottom: 12px solid transparent;
+        }
+      }
+      .dropup-content button,
+      Logout {
+        background-color: #29abff;
+        // background-color: rgba(0, 0, 0, 0.8);
+        // padding-top: 10px;
+        text-decoration: none;
+        display: block;
+
+        border-radius: 17px;
+      }
+
+      .dropup-content button:hover {
+        // background-color: #ddd;
+      }
+      &:hover .dropup-content {
+        display: flex;
+
+        justify-contents: space-between;
+        align-items: center;
+        &:after {
+          border-bottom-color: $blue;
+          left: 93%;
+        }
+      }
       img {
         height: 4rem;
         max-inline-size: 100%;
         display: block;
       }
       button {
-        padding: 0;
         border: 0;
       }
       svg {
-        position: absolute;
-        left: 0;
-        top: 10px;
         background-color: transparent;
         color: #fff;
         font-size: 1.2rem;
         cursor: pointer;
+      }
+      &:after {
+        border-bottom-color: $blue;
+        left: 93%;
       }
     }
     .username {
