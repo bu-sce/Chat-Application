@@ -8,6 +8,6 @@ export const sendMessageRoute = `${host}/api/messages/addmsg`;
 export const recieveMessageRoute = `${host}/api/messages/getmsg`;
 export const setAvatarRoute = `${host}/api/auth/setavatar`;
 export const forgetPasswordRoute = `${host}/api/auth/forgetpassword`;
-export const resetPasswordRoute = `${host}/api/auth/resetpassword/`;
+export const resetPasswordRoute = `${host}/api/auth/resetpassword`;
 export const signUpWithGoogle = `${host}/api/auth/googleSignUp`;
 export const loginWithGoogle = `${host}/api/auth/googleLogIn`;

@@ -7,6 +7,7 @@ import SetAvatar from './components/setAvatar'
 import PageNotFound from './pages/PageNotFound'
 import SetEmail from './pages/SetEmail'
 import Landing from "./pages/Landing"
+import ResetPass from "./pages/ResetPass"
 const App = () => {
   return (
     <BrowserRouter>
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="/setAvatar" element={<SetAvatar />} />
         <Route path="/SetEmail" element={<SetEmail />} />
         <Route path="/chat" element={<Chat />} />
+        <Route path="/resetpassword/*" element={<ResetPass />} />
         
         <Route path="*" element={<PageNotFound />} />
       </Routes>

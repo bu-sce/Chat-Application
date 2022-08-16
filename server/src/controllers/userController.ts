@@ -180,7 +180,7 @@ const forgetPassword = async (req: Request, res: Response, next: NextFunction) =
     const user = await User.findOne({ email });
 
     if (!user) {
-      return res.status(404).json({ message: "No email could not be sent" });
+      return res.json({status:false , msg: "No email could not be sent" });
     }
 
     // Reset Token Gen and add to database hashed (private) version of token
@@ -190,7 +190,7 @@ const forgetPassword = async (req: Request, res: Response, next: NextFunction) =
     await user.save();
 
     // Create reset url to email to provided email
-    const resetUrl = `http://localhost:3000/passwordreset/${resetToken}`;
+    const resetUrl = `http://localhost:3000/resetpassword/${resetToken}`;
 
     // HTML Message
     const message = `
@@ -208,7 +208,7 @@ const forgetPassword = async (req: Request, res: Response, next: NextFunction) =
         text: message,
       });
 
-      res.status(200).json({ success: true, data: "Email Sent" });
+      res.json({ status: true,  msg : 'Email sent successfully' , token: resetToken});//
     } catch (err) {
       console.log(err);
 
@@ -217,7 +217,7 @@ const forgetPassword = async (req: Request, res: Response, next: NextFunction) =
 
       await user.save();
 
-      return res.status(500).json({ message: "Email could not be sent" });
+      return res.json({status : false , msg: "Email could not be sent" });//
     }
   } catch (err) {
     next(err);
@@ -240,7 +240,7 @@ const resetPassword = async (req: Request, res: Response, next: NextFunction) =>
     });
 
     if (!user) {
-      return res.status(400).json({ message: "Invalid Token" });
+      return res.json({  status: false, msg: "Invalid Token" });
     }
 
 
@@ -248,12 +248,40 @@ const resetPassword = async (req: Request, res: Response, next: NextFunction) =>
     user.resetPasswordToken = undefined;
     user.resetPasswordExpire = undefined;
 
+ 
+
+    const resetUrl = `http://localhost:3000/login`;
+
+    // HTML Message
+    const message = `
+    <img src="https://i.ibb.co/q1Hzbxv/tele.jpg" alt="tele" border="0" width="280px" height='100px'>
+    <h3>Hi ${user.username},</h3><h4>You are receving this email because your password has successfully been changed</h4>
+    <table width="100%" cellspacing="0" cellpadding="0"><tr><td><table cellspacing="0" cellpadding="0"><tr><td style="border-radius: 15px;" bgcolor="#4178f9" height=50px><a href="${resetUrl}" clicktracking=off style="padding: 8px 12px;width:250px;text-align:center; border: 1px solid #39780;border-radius: 2px;font-family: Helvetica, Arial, sans-serif;font-size: 17px; color: #ffffff;text-decoration: none;font-weight:bold;display: inline-block;">
+    Click To Go To Login Page</a></td></tr></table></td></tr></table>
+    <h4>Tele-Chat Team.</h4>
+
+    `;
+
+    try {
+      await sendEmail({
+        to: user.email,
+        subject: "Tele-Chat Password Reset confirmation",
+        text: message,
+      });
+
+     
+    } catch (err) {
+      console.log(err);
+
+     next(err)
+    }
     await user.save();
     delete user.password;
-    res.status(201).json({
-      success: true,
-      data: "Password Updated Success",
-      user
+
+    res.json({
+      status: true,
+      msg: "Password Updated Successfully"
+      
       //token: user.getSignedJwtToken(),
     });
   } catch (err) {

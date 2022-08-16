@@ -1,18 +1,107 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
-import { useNavigate, Link } from 'react-router-dom'
-import bg from '../assets/bg.jpg'
-import { FcGoogle } from 'react-icons/fc'
 import { ToastContainer, toast } from 'react-toastify'
+import { useNavigate} from 'react-router-dom'
+import {resetPasswordRoute} from '../utils/APIRoutes'
 import 'react-toastify/dist/ReactToastify.css'
-import { loginRoute, loginWithGoogle } from '../utils/APIRoutes'
+
+
 
 export default function ResetPass() {
+  const navigate = useNavigate();
+  const toastOptions = {
+    position: 'bottom-right',
+    autoClose: 5000,
+    pauseOnHover: true,
+    draggable: true,
+    theme: 'light',
+  }
+  const toastOption = {
+    position: 'bottom-right',
+    autoClose: 3000,
+    pauseOnHover: true,
+    draggable: true,
+    theme: 'light',
+  }
+  const [values, setValues] = useState({
+    password: "",
+    confirmPassword: "",
+  });
+
+  useEffect(() => {
+    if (localStorage.getItem(process.env.resetToken)){}
+  }, []);
+var pass
+const handlePass=(e)=>{
+  setValues({ ...values, [e.target.name]: e.target.value });
+  pass=e.target.value
+
+}
+
+
+  // checks that the form inputs are acceptable , otherwise throws an error
+  const handleValidation = () => {
+
+    const { password, confirmPassword } = values;
+
+     if (password.length < 8) {
+      toast.error(
+        "Password should be equal or greater than 8 characters.",
+        toastOptions
+      );
+      return false;
+    } else if (password !== confirmPassword) {
+      toast.error(
+        "Password and confirm password should be same.",
+        toastOptions
+      );
+      return false;
+    }
+
+    return true;
+  };
+
+  const handleSubmit = async (event) => {
+    
+    let serverDataPut 
+    
+
+      event.preventDefault();
+      // if the handle validation returned true .. send the user data to the backend to record a new user
+const token  = localStorage.getItem('resetToken')
+
+      
+
+      if (handleValidation()) {
+        const { password } = values;
+
+        serverDataPut = await axios.put(`${resetPasswordRoute}/${token}`, {//
+          password
+        });
+        console.log(`serverDataPut ${serverDataPut.data}`)
+      
+    }
+      if (serverDataPut.data.status === false) {
+        toast.error(serverDataPut.data.msg, toastOptions);
+      }
+      if (serverDataPut.data.status === true) {
+        localStorage.clear()
+        toast.success(serverDataPut.data.msg, toastOption);
+        const myTimeout = setTimeout(nav, 3000);
+        function nav(){
+          navigate('/login')
+        }
+      }
+    }
+
+
+
+ 
   return (
     <>
       <FormContainer>
-        <form action="">
+        <form action="" onSubmit={(event) => handleSubmit(event)}>
           <h1>
             <span>Tele-</span>Chat !
           </h1>
@@ -21,13 +110,13 @@ export default function ResetPass() {
             type="password"
             placeholder="Password"
             name="password"
-            // onChange={(e) => handleChange(e)}
+             onChange={(e) => handlePass(e)}
           />
           <input
             type="password"
             placeholder="Confirm Password"
-            name="password"
-            // onChange={(e) => handleChange(e)}
+            name="confirmPassword"
+             onChange={(e) => handlePass(e)}
           />
           <button className="log" type="submit">
             Reset Password
