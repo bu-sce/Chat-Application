@@ -82,40 +82,66 @@ margin-left: 2rem;
   color: white;
   gap: 1rem;
   .emoji {
-    position: relative;
-    svg {
-      font-size: 1.5rem;
-      color: #20272e;
-      cursor: pointer;
-    }
-    .emoji-picker-react {
-      // position: absolute;
-      // top: -350px;
-      background-color: #080420;
-      box-shadow: 0 5px 10px #9a86f3;
-      border-color: #9a86f3;
-      .emoji-scroll-wrapper::-webkit-scrollbar {
+      position: relative;
+      /* .skin-tones-list{
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+        position: absolute;
+        top: 61px;
+        right: 40px;
+      } */
+      svg {
+        font-size: 1.5rem;
+        color: #ffff00c8;
+        cursor: pointer;
+      }
+      .emoji-picker-react {
+        position: absolute;
+        top: -350px;
         background-color: #080420;
-        width: 5px;
-        &-thumb {
-          background-color: #9a86f3;
-        }
-      }
-      .emoji-categories {
-        button {
-          filter: contrast(0);
-        }
-      }
-      .emoji-search {
-        background-color: transparent;
+        box-shadow: 0 5px 10px #9a86f3;
         border-color: #9a86f3;
-      }
-      .emoji-group:before {
-        background-color: #29abff;
+        .emoji-scroll-wrapper::-webkit-scrollbar {
+          background-color: #080420;
+          width: 5px;
+          &-thumb {
+            background-color: #9a86f3;
+          }
+        }
+        .emoji-categories {
+          /* position: absolute;
+          z-index: 999;
+          width: 99%;
+          right: 0;
+          top: 0px;
+          background-color: #20272e;
+          height: 13%; */
+          button {
+            filter: contrast(0);
+          }
+        }
+        .emoji-search {
+          /* background-color: transparent;
+          border-color: #9a86f3;
+          width: calc(100% - 30px);
+          margin-left: 15px;
+          top: 47px;
+          position: absolute;
+          outline: none;
+          box-shadow: none;
+          padding: 10px;
+          box-sizing: border-box;
+          border: 1px solid #efefef;
+          border-radius: 3px;
+          transition: border 0.1s; */
+        }
+        .emoji-group:before {
+          background-color: #080420;
+        }
       }
     }
   }
-}
 .input-container {
   width: 100%;
   border-radius: 2rem;

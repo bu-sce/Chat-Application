@@ -387,7 +387,8 @@ nav li a:hover {
     margin: 0 auto;
     max-width: 100vw;
   }
-  section {
+  
+  .hero{
     padding: 10em 4em;
   }
   .hero .container {
@@ -418,6 +419,9 @@ nav li a:hover {
   }
   .primery-cta {
     margin-right: 1em;
+  }
+  .features-section{
+    padding: 10em 4em;
   }
   .features-section ul {
     display: block;
