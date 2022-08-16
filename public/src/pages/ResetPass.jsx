@@ -30,8 +30,9 @@ export default function ResetPass() {
   });
 
   useEffect(() => {
-    if (localStorage.getItem(process.env.resetToken)){}
+    if (localStorage.getItem("resetToken")){}
   }, []);
+  
 var pass
 const handlePass=(e)=>{
   setValues({ ...values, [e.target.name]: e.target.value });

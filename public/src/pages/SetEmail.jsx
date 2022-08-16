@@ -45,7 +45,10 @@ const handleBack=async(e)=>{
         toast.error(serverData.data.msg, toastOptions);
       }
       if (serverData.data.status === true) {
-        
+        localStorage.setItem(
+          "resetToken",
+          serverData.data.token.replace(/["]+/g, '')
+        );
         toast.success(serverData.data.msg, toastOption);
         const myTimeout = setTimeout(nav, 3000);
         function nav(){
