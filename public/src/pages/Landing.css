@@ -57,6 +57,7 @@ section {
   box-shadow: 0 0 22px #3336;
   transition: 0.6s;
   margin: 0 25px;
+  cursor:pointer;
 }
 .profile-card:hover {
   border-radius: 10px;

@@ -7,6 +7,7 @@ import { allUsersRoute, host } from '../utils/APIRoutes'
 import ChatContainer from '../components/ChatContainer'
 import Contacts from '../components/Contacts'
 import Welcome from '../components/Welcome'
+
 import bg from '../assets/bg.jpg'
 import {MdOutlineKeyboardBackspace} from 'react-icons/md'
 export default function Chat() {
@@ -16,16 +17,18 @@ export default function Chat() {
   const [currentChat, setCurrentChat] = useState(undefined)
   const [currentUser, setCurrentUser] = useState(undefined)
   const [toggle, setToggle] = useState(true)
-  let f 
+  var f 
+  
   function getWindowDimensions() {
     const { innerWidth: width} = window;
     return {
       width
     };
   }
-  let u =()=>{
+  
+  var u =()=>{
     f=getWindowDimensions().width
-    if(f<960){
+    if(f<769){
       return true
     }else{
       return false
@@ -35,7 +38,7 @@ export default function Chat() {
   
   window.addEventListener('resize', function(){
     f =getWindowDimensions()
-    if(f.width<960){
+    if(f.width<769 ){
       setRes(true)
     }else{
       setRes(false)
@@ -138,8 +141,15 @@ background-image: url("${bg}");
   .button{
     position:absolute; 
     display:none;
+    @media screen and  (max-width: 319px)  {
+      left:-12px ;
+      top:43px
+    }
+    @media screen and  (max-width: 480px) and (min-width: 320px) {
+      left:0 ;
+    }
   }
-  @media screen and (max-width: 959px) {
+  @media screen and (max-width: 769px) {
       grid-template-columns: 100% 0% !important;
       .button{
         padding: 0.3rem 2rem;
@@ -152,6 +162,12 @@ background-image: url("${bg}");
         svg {
           font-size: 2rem;
           color: #20272e;
+          @media screen and (min-width: 481px) and (max-width: 768px) {
+            font-size:4rem ;
+          }
+          @media screen and  (max-width: 480px) and (min-width: 320px) {
+            font-size:3.1rem ;
+          }
         } 
       } 
   }

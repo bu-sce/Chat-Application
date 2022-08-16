@@ -40,7 +40,7 @@ export default function ChatInput({ handleSendMsg }) {
           onChange={(e) => setMsg(e.target.value)}
           value={msg}
         />
-        <button type="submit">
+        <button className="send"type="submit">
           {/* //react icon */}
           <IoMdSend />
         </button>
@@ -53,10 +53,28 @@ const Container = styled.div`
 display: grid;
 align-items: center;
 border-radius: 6rem;
-grid-template-columns: 5% 90%;
+margin-bottom: 0.6rem;
+grid-template-columns: 5% 95%;
 background-color: #f5f5f5;
 width: 85%;
 padding: 0 1rem;
+@media screen and (min-width: 481px) and (max-width: 768px) {
+      padding: 0rem 0.3rem ;
+      grid-template-columns: 5% 93%;
+    }
+@media screen and (min-width: 769px) and (max-width: 1023px) {
+      padding: 0rem 0.3rem ;
+      grid-template-columns: 5% 92%;
+  }
+@media screen and  (max-width: 480px) and  (min-width: 320px) {
+    margin-left:1.5rem;
+    padding: 0rem 0.4rem ;
+    width:81%;
+}
+@media screen and  (max-width: 319px)  {
+      width:67% ;
+      margin-left:1.5rem;
+    }
 margin-left: 2rem;
 .button-container {
   display: flex;
@@ -104,9 +122,8 @@ margin-left: 2rem;
   display: flex;
   align-items: center;
   gap: 2rem;
-  justify-contents: space-between;
+  justify-content: space-between;
   background-color: #fff;
-
   input {
     width: 95%;
     height: 60%;
@@ -115,7 +132,7 @@ margin-left: 2rem;
     border: none;
     padding-left: 1rem;
     font-size: 1.2rem;
-    @media screen and (max-width: 959px) {
+    @media screen and (max-width: 769px) {
       &::placeholder{
         font-size:12px;
       }
@@ -127,18 +144,38 @@ margin-left: 2rem;
       outline: none;
     }
   }
-  button {
-    padding: 0.3rem 1.3rem;
+  .send {
     border-radius: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #20272e;
     border: none;
-    svg {
-      font-size: 2rem;
-      color: #fff;
+    padding: 0.2rem 2rem;
+    @media screen and (min-width: 1023px) and (max-width: 1200px) {
+      padding: 0.2rem 2rem ;
+      }
+    @media screen and (min-width: 769px) and (max-width: 1023px) {
+      padding: 0rem 2rem ;
     }
+    @media screen and (min-width: 481px) and (max-width: 768px) {
+      padding: 0rem 2rem ;
+    }
+    @media screen and  (max-width: 319px)  {
+      padding:0.2rem 1rem;
+    }
+    svg {
+      font-size: 2.5rem;
+      color: #fff;
+      @media screen and (min-width: 1024px) and (max-width: 1200px) {
+        font-size:1.8rem ;
+      }
+      @media screen and  (max-width: 480px) and (min-width: 320px) {
+        font-size:1.5rem ;
+      }
+      @media screen and  (max-width: 319px)  {
+        font-size:1.3rem ;
+      }
   }
-}
+  }}
 `
