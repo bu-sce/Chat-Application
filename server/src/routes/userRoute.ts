@@ -1,7 +1,6 @@
 import express from 'express';
 import controller from '../controllers/userController';
-// import refreshTokenController from '../controllers/refreshTokenController';
-// import verifyJWT from '../middleware/authMiddleware'
+
 
 const router = express.Router();
 
@@ -14,6 +13,6 @@ router.put("/resetpassword/:resetToken", controller.resetPassword);
 router.post("/forgetpassword", controller.forgetPassword);
 router.post("/googleSignUp", controller.googleRegistration);
 router.post("/googleLogIn", controller.googleLogIn);
-// router.get('/', refreshTokenController.handleRefreshToken);
+
 
 export default router;
