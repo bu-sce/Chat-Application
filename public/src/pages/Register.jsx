@@ -166,7 +166,7 @@ const Register = () => {
                 <span className="icon">
                   <FcGoogle />
                 </span>
-                <span className="text">Sign Up With Google</span>
+                <span className="text">Sign up with Google</span>
               </button>
 
               <div className="child1">

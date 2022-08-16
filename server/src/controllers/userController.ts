@@ -1,6 +1,5 @@
 const bcrypt = require('bcrypt');
 const crypto = require("crypto");
-import console from 'console';
 import { Request, Response, NextFunction } from 'express';
 
 import User from '../models/userModel';
@@ -210,7 +209,7 @@ const forgetPassword = async (req: Request, res: Response, next: NextFunction) =
 
       res.json({ status: true,  msg : 'Email sent successfully' , token: resetToken});//
     } catch (err) {
-      console.log(err);
+      next(err);
 
       user.resetPasswordToken = undefined;
       user.resetPasswordExpire = undefined;
@@ -263,7 +262,7 @@ const resetPassword = async (req: Request, res: Response, next: NextFunction) =>
     `;
 
     try {
-      await sendEmail({
+      sendEmail({
         to: user.email,
         subject: "Tele-Chat Password Reset confirmation",
         text: message,
@@ -271,8 +270,6 @@ const resetPassword = async (req: Request, res: Response, next: NextFunction) =>
 
      
     } catch (err) {
-      console.log(err);
-
      next(err)
     }
     await user.save();

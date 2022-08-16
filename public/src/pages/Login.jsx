@@ -129,7 +129,7 @@ export default function Login() {
                 <span className="icon">
                   <FcGoogle />
                 </span>
-                <span className="text">Sign Up With Google</span>
+                <span className="text">Sign in with Google</span>
               </button>
 
               <div className="child1">
