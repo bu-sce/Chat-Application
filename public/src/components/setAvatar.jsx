@@ -8,11 +8,17 @@ import 'react-toastify/dist/ReactToastify.css'
 import { useNavigate } from 'react-router-dom'
 import { setAvatarRoute } from '../utils/APIRoutes'
 export default function SetAvatar() {
+  // api for getting avatars
   const api = `https://api.multiavatar.com`
+  // navigate for navigating to pages
   const navigate = useNavigate()
+  //store avatars in array
   const [avatars, setAvatars] = useState([])
+  //to check if avatars got from api
   const [isLoading, setIsLoading] = useState(true)
+  //put selected avtars to set as profile pic
   const [selectedAvatar, setSelectedAvatar] = useState(undefined)
+  //for errors
   const toastOptions = {
     position: 'bottom-right',
     autoClose: 8000,
@@ -20,7 +26,7 @@ export default function SetAvatar() {
     draggable: true,
     theme: 'dark',
   }
-
+//if there's no accounts logged in
   useEffect(() => {
     const s = async () => {
       if (!localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY))
@@ -28,11 +34,12 @@ export default function SetAvatar() {
     }
     s()
   }, [])
-
+// post(send) selected-avtar to dataBase & some validation
   const setProfilePicture = async () => {
     if (selectedAvatar === undefined) {
       toast.error('Please select an avatar', toastOptions)
     } else {
+      // (user)-> (id,isAvatarImageSet,avatarImage) as values stored in DB
       const user = await JSON.parse(
         localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY),
       )
@@ -54,7 +61,7 @@ export default function SetAvatar() {
       }
     }
   }
-
+// show 6 avatars from api and store it
   useEffect(() => {
     const c = async () => {
       const data = []

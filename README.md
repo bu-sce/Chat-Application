@@ -64,7 +64,7 @@ $ npm start
 
 If You don't wanna try it locally, don't worry, We got you covered.
 
-This application is now up and running on <<<>>>>, Go give it a check.
+This application is now up and running on [Tele Chat](https://tele-chat.vercel.app/), Go give it a check.
 
 ## Team<img src="https://camo.githubusercontent.com/ec0df7b334d15078e980be8f26f35f1bd6f004eaa4a121db42fed361360c1817/68747470733a2f2f6d656469612e67697068792e636f6d2f6d656469612f4c6e516a7057614f4e386e68723231764e572f67697068792e676966" alt="img" width="60"  height="40"/>
 
