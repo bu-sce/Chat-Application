@@ -1,5 +1,5 @@
 {
-  "name": "server",
+  "name": "tele-chat-server",
   "version": "1.0.0",
   "description": "",
   "main": "src/index.ts",
@@ -13,10 +13,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/bu-sce/Chat-Application/issues"
-  },
-  "homepage": "https://github.com/bu-sce/Chat-Application#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "chalk": "^4.1.2",

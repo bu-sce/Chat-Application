@@ -4,9 +4,9 @@ dotenv.config();
 
 const DB_USERNAME = process.env.MONGO_USERNAME;
 const DB_PASSWORD = process.env.MONGO_PASSWORD;
-const MONGO_URL = `mongodb+srv://${DB_USERNAME}:${DB_PASSWORD}@cluster0.amnqdvu.mongodb.net/`;
+const MONGO_URL = `mongodb+srv://${DB_USERNAME}:${DB_PASSWORD}@cluster0.amnqdvu.mongodb.net/chat`;
 
-const SERVER_PORT = process.env.SERVER_PORT ? Number(process.env.SERVER_PORT) : 1337;
+const SERVER_PORT = process.env.PORT;
 
  export const config = {
     mongo: {

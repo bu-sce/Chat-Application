@@ -61,7 +61,7 @@ const StartServer = () => {
     /** Error handling */
     app.use(ErrorHandler);
 
-    const server = app.listen(config.server.port, () => Logging.info(`Server is running on port ${config.server.port}`));
+    const server = app.listen(process.env.PORT, () => Logging.info(`Server is running on port ${config.server.port}`));
 
     /** Socket connection */
     const io = socket(server, {
