@@ -26,6 +26,14 @@
 - Delete your account.
 - Other awesome features.
 
+## Features to be added
+
+- Adding a reminder feature to remind the members of the deadline to submit their next paper/research.
+- Adding a news feature that enlight the app members about the latest news of the world of academia. Members should be able to leave their thoughts and comments. 
+- Adding a story feature to keep your colleagues updated of how your current progress is going.
+- Adding a private channel feature to allow specific members have private chat about what they're currently working on.
+
+
 ## Technologies Used
 
 <p align="center">
